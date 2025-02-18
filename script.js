@@ -10,28 +10,27 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function autoPaginate() {
-    // Pega todas as seções do conteúdo (ignorando os elementos de quebra de página)
+    // Captura as seções do conteúdo original
     let contentContainer = document.getElementById("content");
     let sections = Array.from(contentContainer.children).filter(
       el => !el.classList.contains("page-break")
     );
 
     let pageWrapper = document.getElementById("pageWrapper");
+    // Limpa o wrapper para começar a paginação do zero
     pageWrapper.innerHTML = "";
 
     // Define a altura da página A4 em pixels (1mm ≈ 3.77953px)
     let pageHeight = 297 * 3.77953;
 
-    // Cria a primeira página
+    // Cria a primeira página e atualiza o currentContent
     let currentPage = createNewPage();
     pageWrapper.appendChild(currentPage);
     let currentContent = currentPage.querySelector(".content");
 
     sections.forEach((section) => {
-      // Tenta adicionar a seção à página corrente
       currentContent.appendChild(section);
-      // Se o conteúdo ultrapassar o limite, remova a seção da página corrente
-      // e adicione-a à nova página
+      // Se ultrapassar a altura, remova a seção e adicione-a em uma nova página
       if (currentContent.offsetHeight > pageHeight) {
         currentContent.removeChild(section);
         currentPage = createNewPage();
