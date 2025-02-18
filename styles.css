@@ -1,68 +1,143 @@
+/* Reset e configurações básicas */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    font-family: Arial, sans-serif;
-    background: #111;
-    color: white;
+  width: 100%;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  background: #111;
+  color: #fff;
 }
 
+/* Canvas de fundo */
 #backgroundCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
+/* Container principal */
 .container {
-    display: flex;
-    height: 100vh;
+  display: flex;
+  min-height: 100vh;
 }
 
+/* Sidebar (esquerda) */
 .sidebar {
-    width: 250px;
-    background: rgba(30, 30, 30, 0.9);
-    padding: 20px;
-    box-shadow: 3px 0px 5px rgba(0, 0, 0, 0.5);
+  width: 250px;
+  background: rgba(30, 30, 30, 0.95);
+  padding: 20px;
+  box-shadow: 3px 0 5px rgba(0,0,0,0.5);
+}
+.sidebar .profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 10px;
+  border: 3px solid #fff;
+}
+.sidebar h1 {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+.sidebar .contato,
+.sidebar .habilidades {
+  margin-bottom: 20px;
+}
+.sidebar h2 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 5px;
+  text-align: center;
+}
+.sidebar p {
+  font-size: 0.9rem;
+  line-height: 1.4;
 }
 
-.profile-pic {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    display: block;
-    margin: 10px auto;
-    border: 3px solid white;
-}
-
-h2, h3 {
-    text-align: center;
-}
-
+/* Habilidades */
 .skill {
-    margin: 10px 0;
+  margin-bottom: 10px;
 }
-
+.skill span {
+  font-size: 0.9rem;
+}
 .progress {
-    width: 100%;
-    background: #444;
-    border-radius: 5px;
-    overflow: hidden;
+  width: 100%;
+  background: #444;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 5px;
 }
-
 .progress-bar {
-    height: 8px;
-    background: #00ff99;
+  height: 8px;
+  background: #00ff99;
 }
 
+/* Conteúdo principal */
 .content {
-    flex: 1;
-    padding: 20px;
+  flex: 1;
+  padding: 20px 40px;
+}
+.content section {
+  margin-bottom: 30px;
+}
+.content h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #00ff99;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+.content p, .content ul {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+.content ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+.content a {
+  color: #00ff99;
+  text-decoration: none;
+}
+.content a:hover {
+  text-decoration: underline;
 }
 
-section {
-    margin-bottom: 20px;
+/* Experiência e Histórico Acadêmico */
+.experiencia-item {
+  margin-bottom: 20px;
+}
+.experiencia-item h3 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+.experiencia-item p {
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    text-align: center;
+  }
+  .content {
+    padding: 20px;
+  }
 }
