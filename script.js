@@ -73,3 +73,39 @@ function animate() {
   requestAnimationFrame(animate);
 }
 animate();
+
+document.addEventListener("DOMContentLoaded", function () {
+    function autoPaginate() {
+        let content = document.getElementById("content");
+        let pageWrapper = document.getElementById("pageWrapper");
+        let currentPage = document.querySelector(".page");
+        
+        let sections = [...content.children]; // Captura todas as seções
+        let tempPage = document.createElement("div"); // Nova página temporária
+        tempPage.classList.add("page");
+        tempPage.innerHTML = `<div class="sidebar">${document.querySelector(".sidebar").innerHTML}</div><div class="content"></div>`;
+        let tempContent = tempPage.querySelector(".content");
+
+        pageWrapper.innerHTML = ""; // Limpa páginas anteriores
+        pageWrapper.appendChild(tempPage);
+
+        let pageHeight = 297 * 3.77953; // Conversão mm -> px (A4)
+        let usedHeight = 0;
+
+        sections.forEach((section) => {
+            let sectionClone = section.cloneNode(true);
+            tempContent.appendChild(sectionClone);
+            usedHeight += sectionClone.offsetHeight;
+
+            if (usedHeight >= pageHeight) {
+                let newPage = tempPage.cloneNode(true);
+                pageWrapper.appendChild(newPage);
+                tempContent.innerHTML = ""; // Limpa conteúdo para a próxima página
+                usedHeight = sectionClone.offsetHeight;
+                tempContent.appendChild(sectionClone);
+            }
+        });
+    }
+
+    autoPaginate();
+});
