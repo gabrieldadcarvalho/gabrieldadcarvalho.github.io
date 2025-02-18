@@ -10,34 +10,39 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function autoPaginate() {
-    // Captura as seções do conteúdo original
+    // Captura todas as seções do conteúdo original
     let contentContainer = document.getElementById("content");
     let sections = Array.from(contentContainer.children).filter(
       el => !el.classList.contains("page-break")
     );
 
     let pageWrapper = document.getElementById("pageWrapper");
-    // Limpa o wrapper para começar a paginação do zero
+    // Limpa o wrapper para iniciar a paginação
     pageWrapper.innerHTML = "";
 
     // Define a altura da página A4 em pixels (1mm ≈ 3.77953px)
     let pageHeight = 297 * 3.77953;
 
-    // Cria a primeira página e atualiza o currentContent
+    // Cria a primeira página
     let currentPage = createNewPage();
     pageWrapper.appendChild(currentPage);
     let currentContent = currentPage.querySelector(".content");
+    let currentPageHeight = 0;
 
+    // Para cada seção, verifica se ela cabe na página atual
     sections.forEach((section) => {
-      currentContent.appendChild(section);
-      // Se ultrapassar a altura, remova a seção e adicione-a em uma nova página
-      if (currentContent.offsetHeight > pageHeight) {
-        currentContent.removeChild(section);
+      // Obtenha a altura da seção
+      let sectionHeight = section.offsetHeight;
+      // Se a seção não couber na página atual, cria uma nova página
+      if (currentPageHeight + sectionHeight > pageHeight) {
         currentPage = createNewPage();
         pageWrapper.appendChild(currentPage);
         currentContent = currentPage.querySelector(".content");
-        currentContent.appendChild(section);
+        currentPageHeight = 0;
       }
+      // Adiciona a seção na página atual e atualiza a altura acumulada
+      currentContent.appendChild(section);
+      currentPageHeight += section.offsetHeight;
     });
   }
 
