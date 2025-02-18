@@ -1,144 +1,75 @@
-/* Reset e configurações básicas */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+// Ajusta o canvas de fundo
+const canvas = document.getElementById("backgroundCanvas");
+const ctx = canvas.getContext("2d");
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 }
-html, body {
-  width: 100%;
-  height: 100%;
-  font-family: Arial, sans-serif;
-}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
 
-/* Fundo com animação */
-body {
-  background: #111;
-  position: relative;
-  overflow: auto;
-}
-#backgroundCanvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
+// Configurações para a animação de partículas
+const colors = ["#00ff99", "#8e44ad"]; // verde e roxo
+const numParticles = 80;
+const maxDistance = 150;
+let particles = [];
 
-/* Centraliza a folha A4 */
-#pageWrapper {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
-}
-
-/* Contêiner com dimensões aproximadas de uma folha A4 */
-.page {
-  width: 210mm;
-  height: 297mm;
-  background: #fff;
-  color: #000;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  display: flex;
-  overflow: hidden;
-}
-
-/* Sidebar */
-.sidebar {
-  width: 30%;
-  background: #222;
-  padding: 20px;
-  color: #fff;
-}
-.sidebar .profile-pic {
-  width: 100%;
-  max-width: 120px;
-  border-radius: 50%;
-  display: block;
-  margin: 0 auto 10px;
-}
-.sidebar h1 {
-  text-align: center;
-  font-size: 1.2em;
-  margin-bottom: 15px;
-}
-.sidebar .contato, .sidebar .habilidades {
-  margin-bottom: 20px;
-}
-.sidebar h2 {
-  font-size: 1em;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #444;
-  padding-bottom: 5px;
-  text-align: center;
-}
-.sidebar p {
-  font-size: 0.9em;
-}
-
-/* Progress bars */
-.skill {
-  margin-bottom: 10px;
-}
-.skill span {
-  font-size: 0.9em;
-}
-.progress {
-  width: 100%;
-  background: #444;
-  border-radius: 5px;
-  overflow: hidden;
-  margin-top: 5px;
-}
-.progress-bar {
-  height: 8px;
-  background: #00ff99;
-}
-
-/* Conteúdo principal */
-.content {
-  width: 70%;
-  padding: 20px;
-  overflow-y: auto;
-}
-.content section {
-  margin-bottom: 20px;
-}
-.content h2 {
-  font-size: 1.2em;
-  border-bottom: 2px solid #00ff99;
-  padding-bottom: 5px;
-  margin-bottom: 10px;
-}
-.content p, .content ul {
-  font-size: 1em;
-  line-height: 1.6;
-  margin-bottom: 10px;
-}
-.content ul {
-  list-style-type: disc;
-  padding-left: 20px;
-}
-.content a {
-  color: #00ff99;
-  text-decoration: none;
-}
-.content a:hover {
-  text-decoration: underline;
-}
-
-/* Responsividade para telas menores */
-@media (max-width: 800px) {
-  .page {
-    width: 90%;
-    height: auto;
-    flex-direction: column;
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 3 + 2;
+    this.speedX = (Math.random() - 0.5) * 2;
+    this.speedY = (Math.random() - 0.5) * 2;
+    this.color = colors[Math.floor(Math.random() * colors.length)];
   }
-  .sidebar, .content {
-    width: 100%;
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+  }
+  draw() {
+    ctx.fillStyle = this.color;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
   }
 }
+
+function initParticles() {
+  particles = [];
+  for (let i = 0; i < numParticles; i++) {
+    particles.push(new Particle());
+  }
+}
+initParticles();
+
+function drawConnections() {
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      if (distance < maxDistance) {
+        ctx.strokeStyle = "rgba(255,255,255,0.1)";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => {
+    p.update();
+    p.draw();
+  });
+  drawConnections();
+  requestAnimationFrame(animate);
+}
+animate();
