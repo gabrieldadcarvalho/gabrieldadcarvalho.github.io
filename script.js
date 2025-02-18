@@ -78,19 +78,28 @@ document.addEventListener("DOMContentLoaded", function () {
     function autoPaginate() {
         let content = document.getElementById("content");
         let pageWrapper = document.getElementById("pageWrapper");
-        let currentPage = document.querySelector(".page");
-        
         let sections = [...content.children]; // Captura todas as seções
-        let tempPage = document.createElement("div"); // Nova página temporária
-        tempPage.classList.add("page");
-        tempPage.innerHTML = `<div class="sidebar">${document.querySelector(".sidebar").innerHTML}</div><div class="content"></div>`;
-        let tempContent = tempPage.querySelector(".content");
+        
+        let pageHeight = 297 * 3.77953; // Conversão de mm para px (A4)
+        let usedHeight = 0;
+        let currentPage = null;
+        let firstPage = true; // Flag para definir se é a primeira página
+
+        // Função para criar uma nova página
+        function createNewPage() {
+            let newPage = document.createElement("div");
+            newPage.classList.add("page");
+            newPage.innerHTML = `
+                ${firstPage ? `<div class="sidebar">${document.querySelector(".sidebar").innerHTML}</div>` : ""}
+                <div class="content"></div>
+            `;
+            firstPage = false;
+            pageWrapper.appendChild(newPage);
+            return newPage.querySelector(".content");
+        }
 
         pageWrapper.innerHTML = ""; // Limpa páginas anteriores
-        pageWrapper.appendChild(tempPage);
-
-        let pageHeight = 297 * 3.77953; // Conversão mm -> px (A4)
-        let usedHeight = 0;
+        let tempContent = createNewPage(); // Cria a primeira página
 
         sections.forEach((section) => {
             let sectionClone = section.cloneNode(true);
@@ -98,11 +107,9 @@ document.addEventListener("DOMContentLoaded", function () {
             usedHeight += sectionClone.offsetHeight;
 
             if (usedHeight >= pageHeight) {
-                let newPage = tempPage.cloneNode(true);
-                pageWrapper.appendChild(newPage);
-                tempContent.innerHTML = ""; // Limpa conteúdo para a próxima página
-                usedHeight = sectionClone.offsetHeight;
-                tempContent.appendChild(sectionClone);
+                usedHeight = sectionClone.offsetHeight; // Reinicia altura usada
+                tempContent = createNewPage(); // Cria uma nova página
+                tempContent.appendChild(sectionClone); // Move a seção excedente
             }
         });
     }
