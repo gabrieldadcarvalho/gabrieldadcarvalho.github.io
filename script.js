@@ -1,117 +1,144 @@
-// Animação de grafos dinâmicos com partículas (verde e roxo)
-const canvas = document.getElementById("backgroundCanvas");
-const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const colors = ["#00ff99", "#8e44ad"]; // verde e roxo
-const numParticles = 50;
-const maxDistance = 120;
-let particlesArray = [];
-
-class Particle {
-  constructor(x, y, size, speedX, speedY, color) {
-    this.x = x;
-    this.y = y;
-    this.size = size;
-    this.speedX = speedX;
-    this.speedY = speedY;
-    this.color = color;
-  }
-  update() {
-    this.x += this.speedX;
-    this.y += this.speedY;
-    if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
-    if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
-  }
-  draw() {
-    ctx.fillStyle = this.color;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fill();
-  }
+/* Reset e configurações básicas */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
 }
 
-function initParticles() {
-  particlesArray = [];
-  for (let i = 0; i < numParticles; i++) {
-    let size = Math.random() * 3 + 2;
-    let x = Math.random() * canvas.width;
-    let y = Math.random() * canvas.height;
-    let speedX = (Math.random() - 0.5) * 2;
-    let speedY = (Math.random() - 0.5) * 2;
-    let color = colors[Math.floor(Math.random() * colors.length)];
-    particlesArray.push(new Particle(x, y, size, speedX, speedY, color));
+/* Fundo com animação */
+body {
+  background: #111;
+  position: relative;
+  overflow: auto;
+}
+#backgroundCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Centraliza a folha A4 */
+#pageWrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Contêiner com dimensões aproximadas de uma folha A4 */
+.page {
+  width: 210mm;
+  height: 297mm;
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  display: flex;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 30%;
+  background: #222;
+  padding: 20px;
+  color: #fff;
+}
+.sidebar .profile-pic {
+  width: 100%;
+  max-width: 120px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 10px;
+}
+.sidebar h1 {
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+.sidebar .contato, .sidebar .habilidades {
+  margin-bottom: 20px;
+}
+.sidebar h2 {
+  font-size: 1em;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 5px;
+  text-align: center;
+}
+.sidebar p {
+  font-size: 0.9em;
+}
+
+/* Progress bars */
+.skill {
+  margin-bottom: 10px;
+}
+.skill span {
+  font-size: 0.9em;
+}
+.progress {
+  width: 100%;
+  background: #444;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+.progress-bar {
+  height: 8px;
+  background: #00ff99;
+}
+
+/* Conteúdo principal */
+.content {
+  width: 70%;
+  padding: 20px;
+  overflow-y: auto;
+}
+.content section {
+  margin-bottom: 20px;
+}
+.content h2 {
+  font-size: 1.2em;
+  border-bottom: 2px solid #00ff99;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+.content p, .content ul {
+  font-size: 1em;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+.content ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+.content a {
+  color: #00ff99;
+  text-decoration: none;
+}
+.content a:hover {
+  text-decoration: underline;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 800px) {
+  .page {
+    width: 90%;
+    height: auto;
+    flex-direction: column;
+  }
+  .sidebar, .content {
+    width: 100%;
   }
 }
-
-function connectParticles() {
-  for (let a = 0; a < particlesArray.length; a++) {
-    for (let b = a + 1; b < particlesArray.length; b++) {
-      const dx = particlesArray[a].x - particlesArray[b].x;
-      const dy = particlesArray[a].y - particlesArray[b].y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      if (distance < maxDistance) {
-        ctx.strokeStyle = "rgba(255, 255, 255, 0.1)";
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-        ctx.stroke();
-      }
-    }
-  }
-}
-
-function animateParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particlesArray.forEach(particle => {
-    particle.update();
-    particle.draw();
-  });
-  connectParticles();
-  requestAnimationFrame(animateParticles);
-}
-
-initParticles();
-animateParticles();
-
-window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  initParticles();
-});
-
-// Função de paginação simples:
-// Se o conteúdo do <main class="content"> ultrapassar um limite (PAGE_HEIGHT),
-// as seções que excederem serão movidas para uma nova "folha" (nova div.page) criada dinamicamente.
-function paginate() {
-  const PAGE_HEIGHT = 1400; // altura máxima da página em px (deve ser igual à altura definida em .page)
-  const pagesContainer = document.getElementById("pages-container");
-  const firstPage = pagesContainer.querySelector(".page");
-  const contentArea = firstPage.querySelector(".content");
-  // Obtem todas as seções do conteúdo
-  const sections = Array.from(contentArea.querySelectorAll("section"));
-  let currentPage = firstPage;
-  
-  sections.forEach(section => {
-    // Se a altura do currentPage exceder o limite, cria uma nova página
-    if (currentPage.scrollHeight > PAGE_HEIGHT) {
-      // Cria nova página sem a sidebar (para manter o cabeçalho somente na primeira folha)
-      const newPage = document.createElement("div");
-      newPage.classList.add("page");
-      const newContainer = document.createElement("div");
-      newContainer.classList.add("container-content");
-      const newMain = document.createElement("main");
-      newMain.classList.add("content");
-      newContainer.appendChild(newMain);
-      newPage.appendChild(newContainer);
-      pagesContainer.appendChild(newPage);
-      currentPage = newPage;
-    }
-    // Move a seção atual para o currentPage
-    currentPage.querySelector(".content").appendChild(section);
-  });
-}
-
-window.addEventListener("load", paginate);
