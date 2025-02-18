@@ -1,3 +1,46 @@
+document.addEventListener("DOMContentLoaded", function () {
+  // Função para criar uma nova página (com sidebar e área de conteúdo)
+  function createNewPage() {
+    let newPage = document.createElement("div");
+    newPage.classList.add("page");
+    newPage.innerHTML = `<div class="sidebar">${document.querySelector(".sidebar").innerHTML}</div><div class="content"></div>`;
+    return newPage;
+  }
+
+  function autoPaginate() {
+    let content = document.getElementById("content");
+    let pageWrapper = document.getElementById("pageWrapper");
+    let sections = Array.from(content.children);
+    
+    // Limpa as páginas existentes
+    pageWrapper.innerHTML = "";
+
+    // Define a altura da página A4 em pixels (1mm ≈ 3.77953px)
+    let pageHeight = 297 * 3.77953;
+    
+    // Cria a primeira página
+    let currentPage = createNewPage();
+    pageWrapper.appendChild(currentPage);
+    let currentContent = currentPage.querySelector(".content");
+
+    // Percorre cada seção e adiciona à página corrente
+    sections.forEach((section) => {
+      currentContent.appendChild(section);
+      // Se o conteúdo exceder a altura da página, remova a seção e crie uma nova página
+      if (currentContent.offsetHeight > pageHeight) {
+        currentContent.removeChild(section);
+        currentPage = createNewPage();
+        pageWrapper.appendChild(currentPage);
+        currentContent = currentPage.querySelector(".content");
+        currentContent.appendChild(section);
+      }
+    });
+  }
+
+  autoPaginate();
+});
+
+// Código da animação de partículas permanece inalterado
 const canvas = document.getElementById("backgroundCanvas");
 const ctx = canvas.getContext("2d");
 function resizeCanvas() {
@@ -7,7 +50,6 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
 
-// Configurações para a animação de partículas
 const colors = ["#00ff99", "#8e44ad"]; // verde e roxo
 const numParticles = 80;
 const maxDistance = 150;
@@ -72,46 +114,3 @@ function animate() {
   requestAnimationFrame(animate);
 }
 animate();
-
-document.addEventListener("DOMContentLoaded", function () {
-    function autoPaginate() {
-        let content = document.getElementById("content");
-        let pageWrapper = document.getElementById("pageWrapper");
-        let sections = [...content.children]; // Captura todas as seções
-        
-        let pageHeight = 297 * 3.77953; // Conversão de mm para px (A4)
-        let usedHeight = 0;
-        let currentPage = null;
-        let firstPage = true; // Flag para definir se é a primeira página
-
-        // Função para criar uma nova página
-        function createNewPage() {
-            let newPage = document.createElement("div");
-            newPage.classList.add("page");
-            newPage.innerHTML = `
-                ${firstPage ? `<div class="sidebar">${document.querySelector(".sidebar").innerHTML}</div>` : ""}
-                <div class="content"></div>
-            `;
-            firstPage = false;
-            pageWrapper.appendChild(newPage);
-            return newPage.querySelector(".content");
-        }
-
-        pageWrapper.innerHTML = ""; // Limpa páginas anteriores
-        let tempContent = createNewPage(); // Cria a primeira página
-
-        sections.forEach((section) => {
-            let sectionClone = section.cloneNode(true);
-            tempContent.appendChild(sectionClone);
-            usedHeight += sectionClone.offsetHeight;
-
-            if (usedHeight >= pageHeight) {
-                usedHeight = sectionClone.offsetHeight; // Reinicia altura usada
-                tempContent = createNewPage(); // Cria uma nova página
-                tempContent.appendChild(sectionClone); // Move a seção excedente
-            }
-        });
-    }
-
-    autoPaginate();
-});
