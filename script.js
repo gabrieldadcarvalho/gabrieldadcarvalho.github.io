@@ -1,4 +1,3 @@
-cat << 'EOF' > script.js
 document.addEventListener("DOMContentLoaded", function () {
   // Armazena o HTML original da sidebar antes de limpar o wrapper
   const originalSidebarHTML = document.querySelector(".sidebar").innerHTML;
