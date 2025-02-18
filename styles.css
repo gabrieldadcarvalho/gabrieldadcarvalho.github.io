@@ -132,30 +132,33 @@ body {
 }
 
 .icon-container {
-    display: inline-flex; /* Alinha ícone e texto lado a lado */
-    align-items: center;  /* Alinha verticalmente o ícone e o nome */
-    margin-right: 15px; /* Espaço entre os itens */
+  display: inline-flex;      /* Alinha ícone e texto lado a lado */
+  align-items: center;       /* Alinha verticalmente */
+  margin-right: 15px;        /* Espaço entre os grupos */
+}
+
+.icon-container a {
+  text-decoration: none;     /* Remove sublinhado */
+  color: #007bff;            /* Define cor azul para o texto */
+}
+
+.icon-container a:hover {
+  text-decoration: underline; /* Sublinha ao passar o mouse */
 }
 
 .icon {
-    width: 24px; /* Ajusta o tamanho do ícone conforme necessário */
-    height: 24px;
-    margin-right: 4px; /* Espaço entre o ícone e o nome, menor do que o anterior */
+  width: 24px;               /* Tamanho do ícone */
+  height: 24px;
+  margin-right: 4px;         /* Espaço entre a imagem e o texto */
+  vertical-align: middle;
 }
 
-span {
-    font-size: 14px; /* Ajusta o tamanho do nome */
-    font-weight: bold; /* Deixa o nome em negrito, se preferir */
+/* Caso o navegador adicione margem ou padding padrão ao span, zere-os */
+.icon-container a span {
+  margin: 0;
+  padding: 0;
 }
 
-a {
-    text-decoration: none; /* Remove o sublinhado do link */
-    color: #007bff; /* Adiciona cor azul ao texto dos links */
-}
-
-a:hover {
-    text-decoration: underline; /* Adiciona o sublinhado ao passar o mouse */
-}
 /* Responsividade para telas menores */
 @media (max-width: 800px) {
   .page {
