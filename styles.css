@@ -1,4 +1,4 @@
-/* Reset e configurações básicas */
+#F2F2F2/* Reset e configurações básicas */
 * {
   margin: 0;
   padding: 0;
@@ -52,7 +52,7 @@ body {
   width: 35%;
   background: #222;
   padding: 20px;
-  color: #fff;
+  color: #f2f2f2;
 }
 .sidebar .profile-pic {
   width: 100%;
