@@ -116,5 +116,8 @@ function animate() {
     p.update();
     p.draw();
   });
-  
+  drawConnections();
+  requestAnimationFrame(animate);
+}
+
 animate();
