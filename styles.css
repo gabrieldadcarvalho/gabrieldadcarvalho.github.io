@@ -4,86 +4,88 @@
   padding: 0;
   box-sizing: border-box;
 }
-body, html {
+html, body {
   width: 100%;
   height: 100%;
-  font-family: 'Arial', sans-serif;
-  background: #111;
-  color: #fff;
-  overflow: auto;
+  font-family: 'JetBrains Mono', monospace;
 }
 
-/* Canvas de fundo */
+/* Fundo com animação */
+body {
+  background: #111;
+  position: relative;
+  overflow: auto;
+}
 #backgroundCanvas {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 0;
 }
 
-/* Estilo das páginas (formato de folha) */
-.page {
-  width: 1000px;
-  height: 1400px;
-  background: rgba(0, 0, 0, 0.8);
-  border: 2px solid #00ff99;
-  border-radius: 10px;
-  margin: 20px auto;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  overflow: hidden;
+/* Centraliza a folha A4 */
+#pageWrapper {
   position: relative;
-}
-
-/* Container interno da página */
-.container-content {
+  z-index: 1;
   display: flex;
-  height: 100%;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
 }
 
-/* Sidebar (coluna da esquerda) */
+/* Contêiner com dimensões aproximadas de uma folha A4 */
+.page {
+  width: 210mm;
+  height: 297mm;
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  display: flex;
+  overflow: hidden;
+}
+
+/* Sidebar */
 .sidebar {
-  width: 250px;
-  background: rgba(30, 30, 30, 0.95);
+  width: 30%;
+  background: #222;
   padding: 20px;
-  box-shadow: 3px 0 5px rgba(0,0,0,0.5);
+  color: #fff;
 }
 .sidebar .profile-pic {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  max-width: 120px;
   border-radius: 50%;
   display: block;
   margin: 0 auto 10px;
-  border: 3px solid #fff;
 }
 .sidebar h1 {
   text-align: center;
-  font-size: 1.3rem;
-  margin-bottom: 20px;
+  font-size: 1.2em;
+  margin-bottom: 15px;
 }
-.sidebar .contato,
-.sidebar .habilidades {
+.sidebar .contato, .sidebar .habilidades {
   margin-bottom: 20px;
 }
 .sidebar h2 {
-  font-size: 1rem;
+  font-size: 1em;
   margin-bottom: 10px;
   border-bottom: 1px solid #444;
   padding-bottom: 5px;
   text-align: center;
 }
 .sidebar p {
-  font-size: 0.9rem;
-  line-height: 1.4;
+  font-size: 0.9em;
 }
 
-/* Habilidades */
+/* Progress bars */
 .skill {
   margin-bottom: 10px;
 }
 .skill span {
-  font-size: 0.9rem;
+  font-size: 0.9em;
 }
 .progress {
   width: 100%;
@@ -99,24 +101,23 @@ body, html {
 
 /* Conteúdo principal */
 .content {
-  flex: 1;
-  padding: 20px 40px;
+  width: 70%;
+  padding: 20px;
   overflow-y: auto;
 }
 .content section {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 .content h2 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
+  font-size: 1.2em;
   border-bottom: 2px solid #00ff99;
-  display: inline-block;
   padding-bottom: 5px;
+  margin-bottom: 10px;
 }
 .content p, .content ul {
-  font-size: 0.95rem;
+  font-size: 1em;
   line-height: 1.6;
-  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .content ul {
   list-style-type: disc;
@@ -130,34 +131,14 @@ body, html {
   text-decoration: underline;
 }
 
-/* Experiência e Histórico Acadêmico */
-.experiencia-item {
-  margin-bottom: 20px;
-}
-.experiencia-item h3 {
-  font-size: 1.1rem;
-  margin-bottom: 5px;
-}
-.experiencia-item p {
-  font-size: 0.95rem;
-  margin-bottom: 5px;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
+/* Responsividade para telas menores */
+@media (max-width: 800px) {
   .page {
     width: 90%;
     height: auto;
-    margin: 10px auto;
-  }
-  .container-content {
     flex-direction: column;
   }
-  .sidebar {
+  .sidebar, .content {
     width: 100%;
-    text-align: center;
-  }
-  .content {
-    padding: 20px;
   }
 }
