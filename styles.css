@@ -14,7 +14,7 @@ html, body {
 
 /* Fundo com animação */
 body {
-  background: #DCDCDC; /* Alterado de #111 para #DCDCDC */
+  background: #DCDCDC;
   position: relative;
   overflow: auto;
 }
@@ -43,20 +43,23 @@ body {
 /* Contêiner com dimensões aproximadas de uma folha A4 */
 .page {
   width: 210mm;
-  height: 297mm;
-  background: #FFFFFF; /* Alterado para branco */
+  min-height: 297mm;
+  background: #FFFFFF;
   color: #000;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   display: flex;
-  overflow: hidden;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  overflow: visible;
+  padding: 20px;
 }
 
-/* Sidebar (ajustada para 35%) */
+/* Sidebar */
 .sidebar {
   width: 35%;
-  background: #F2F2F2; /* Alterado para #F2F2F2 */
+  background: #F2F2F2;
   padding: 20px;
-  color: #000;  /* Ajustado para preto para melhor contraste */
+  color: #000;
 }
 
 .sidebar .profile-pic {
@@ -69,7 +72,7 @@ body {
 
 .sidebar h1 {
   text-align: center;
-  font-size: 1.1em; /* Reduzido de 1.2em */
+  font-size: 1.1em;
   margin-bottom: 15px;
 }
 
@@ -78,7 +81,7 @@ body {
 }
 
 .sidebar h2 {
-  font-size: 0.9em; /* Reduzido de 1em */
+  font-size: 0.9em;
   margin-bottom: 10px;
   border-bottom: 1px solid #444;
   padding-bottom: 5px;
@@ -86,7 +89,7 @@ body {
 }
 
 .sidebar p {
-  font-size: 0.6em; /* Reduzido de 0.7em */
+  font-size: 0.6em;
 }
 
 /* Progress bars */
@@ -95,7 +98,7 @@ body {
 }
 
 .skill span {
-  font-size: 1em; /* Reduzido de 0.7em */
+  font-size: 1em;
 }
 
 .progress {
@@ -111,26 +114,31 @@ body {
   background: #00ff99;
 }
 
-/* Conteúdo principal (ajustado para 60%) */
+/* Conteúdo principal */
 .content {
   width: 60%;
   padding: 20px;
-  /* Removemos overflow-y para evitar scroll interno */
 }
 
 .content section {
   margin-bottom: 20px;
 }
 
+/* Evita que experiência seja cortada entre páginas */
+.experiencia {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
 .content h2 {
-  font-size: 1.1em; /* Reduzido de 1.2em */
+  font-size: 1.1em;
   border-bottom: 2px solid #00ff99;
   padding-bottom: 5px;
   margin-bottom: 10px;
 }
 
 .content p, .content ul {
-  font-size: 0.9em; /* Reduzido de 1em */
+  font-size: 0.9em;
   line-height: 1.6;
   margin-bottom: 10px;
 }
@@ -151,31 +159,25 @@ body {
 
 /* Ícones e links */
 .icon-container {
-  display: inline-flex;      /* Alinha ícone e texto lado a lado */
-  align-items: center;       /* Alinha verticalmente */
-  margin-right: 15px;        /* Espaço entre os grupos */
+  display: inline-flex;
+  align-items: center;
+  margin-right: 15px;
 }
 
 .icon-container a {
-  text-decoration: none;     /* Remove sublinhado */
-  color: #007bff;            /* Define cor azul para o texto */
+  text-decoration: none;
+  color: #007bff;
 }
 
 .icon-container a:hover {
-  text-decoration: underline; /* Sublinha ao passar o mouse */
+  text-decoration: underline;
 }
 
 .icon {
-  width: 12px;               /* Tamanho do ícone */
+  width: 12px;
   height: 12px;
-  margin-right: 4px;         /* Espaço entre a imagem e o texto */
+  margin-right: 4px;
   vertical-align: middle;
-}
-
-/* Zera margens/paddings extras do span, se houver */
-.icon-container a span {
-  margin: 0;
-  padding: 0;
 }
 
 /* Linha vertical para timeline */
