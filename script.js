@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function autoPaginate() {
-    // Pega as seções originais, ignorando elementos com classe "page-break"
+    // Pega todas as seções do conteúdo (ignorando os elementos de quebra de página)
     let contentContainer = document.getElementById("content");
     let sections = Array.from(contentContainer.children).filter(
       el => !el.classList.contains("page-break")
@@ -30,34 +30,13 @@ document.addEventListener("DOMContentLoaded", function () {
     sections.forEach((section) => {
       // Tenta adicionar a seção à página corrente
       currentContent.appendChild(section);
-
-      // Se o conteúdo ultrapassar o limite, remova a seção da página corrente,
-      // crie uma nova página e adicione a seção nela
+      // Se o conteúdo ultrapassar o limite, remova a seção da página corrente
+      // e adicione-a à nova página
       if (currentContent.offsetHeight > pageHeight) {
         currentContent.removeChild(section);
-
-        // Dividir o conteúdo da seção se necessário
-        let sectionClone = section.cloneNode(true);
-        let sectionContent = sectionClone.innerHTML;
-        section.innerHTML = "";
-
-        while (sectionContent.length > 0) {
-          let tempDiv = document.createElement("div");
-          tempDiv.innerHTML = sectionContent;
-          section.appendChild(tempDiv);
-
-          if (currentContent.offsetHeight > pageHeight) {
-            section.removeChild(tempDiv);
-            currentPage = createNewPage();
-            pageWrapper.appendChild(currentPage);
-            currentContent = currentPage.querySelector(".content");
-            sectionContent = tempDiv.innerHTML;
-            section.innerHTML = "";
-          } else {
-            sectionContent = "";
-          }
-        }
-
+        currentPage = createNewPage();
+        pageWrapper.appendChild(currentPage);
+        currentContent = currentPage.querySelector(".content");
         currentContent.appendChild(section);
       }
     });
@@ -137,7 +116,4 @@ function animate() {
     p.update();
     p.draw();
   });
-  drawConnections();
-  requestAnimationFrame(animate);
-}
-animate();
+  
