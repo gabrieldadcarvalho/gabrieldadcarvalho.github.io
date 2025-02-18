@@ -147,8 +147,8 @@ body {
 }
 
 .icon {
-  width: 24px;               /* Tamanho do ícone */
-  height: 24px;
+  width: 12px;               /* Tamanho do ícone */
+  height: 12px;
   margin-right: 4px;         /* Espaço entre a imagem e o texto */
   vertical-align: middle;
 }
