@@ -10,7 +10,7 @@ body, html {
   font-family: 'Arial', sans-serif;
   background: #111;
   color: #fff;
-  overflow: hidden;
+  overflow: auto;
 }
 
 /* Canvas de fundo */
@@ -23,19 +23,26 @@ body, html {
   z-index: -1;
 }
 
-/* Container do currículo (retângulo centralizado) */
-.container {
-  margin: 50px auto;
-  max-width: 1000px;
+/* Estilo das páginas (formato de folha) */
+.page {
+  width: 1000px;
+  height: 1400px;
   background: rgba(0, 0, 0, 0.8);
   border: 2px solid #00ff99;
   border-radius: 10px;
+  margin: 20px auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
   overflow: hidden;
-  display: flex;
-  z-index: 1;
+  position: relative;
 }
 
-/* Sidebar (esquerda) */
+/* Container interno da página */
+.container-content {
+  display: flex;
+  height: 100%;
+}
+
+/* Sidebar (coluna da esquerda) */
 .sidebar {
   width: 250px;
   background: rgba(30, 30, 30, 0.95);
@@ -95,7 +102,6 @@ body, html {
   flex: 1;
   padding: 20px 40px;
   overflow-y: auto;
-  max-height: 90vh;
 }
 .content section {
   margin-bottom: 30px;
@@ -139,9 +145,13 @@ body, html {
 
 /* Responsividade */
 @media (max-width: 768px) {
-  .container {
+  .page {
+    width: 90%;
+    height: auto;
+    margin: 10px auto;
+  }
+  .container-content {
     flex-direction: column;
-    margin: 20px;
   }
   .sidebar {
     width: 100%;
