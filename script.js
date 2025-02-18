@@ -1,4 +1,3 @@
-// Ajusta o canvas de fundo
 const canvas = document.getElementById("backgroundCanvas");
 const ctx = canvas.getContext("2d");
 function resizeCanvas() {
