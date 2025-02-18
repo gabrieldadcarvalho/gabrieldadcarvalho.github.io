@@ -39,7 +39,7 @@ body {
 
 /* Contêiner com dimensões aproximadas de uma folha A4 */
 .page {
-  width: 230mm;
+  width: 210mm;
   height: 297mm;
   background: #FFFFFF; /* Alterado para branco */
   color: #000;
