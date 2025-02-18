@@ -1,0 +1,236 @@
+cat << 'EOF' > styles.css
+/* Reset e configurações básicas */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;  /* Tamanho global das fontes */
+}
+
+/* Fundo com animação */
+body {
+  background: #DCDCDC; /* Alterado de #111 para #DCDCDC */
+  position: relative;
+  overflow: auto;
+}
+
+#backgroundCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Centraliza as folhas A4 empilhadas verticalmente */
+#pageWrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* Contêiner com dimensões aproximadas de uma folha A4 */
+.page {
+  width: 210mm;
+  height: 297mm;
+  background: #FFFFFF; /* Alterado para branco */
+  color: #000;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  display: flex;
+  overflow: hidden;
+}
+
+/* Sidebar (ajustada para 35%) */
+.sidebar {
+  width: 35%;
+  background: #F2F2F2; /* Alterado para #F2F2F2 */
+  padding: 20px;
+  color: #000;  /* Ajustado para preto para melhor contraste */
+}
+
+.sidebar .profile-pic {
+  width: 100%;
+  max-width: 120px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.sidebar h1 {
+  text-align: center;
+  font-size: 1.1em; /* Reduzido de 1.2em */
+  margin-bottom: 15px;
+}
+
+.sidebar .contato, .sidebar .habilidades {
+  margin-bottom: 20px;
+}
+
+.sidebar h2 {
+  font-size: 0.9em; /* Reduzido de 1em */
+  margin-bottom: 10px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.sidebar p {
+  font-size: 0.6em; /* Reduzido de 0.7em */
+}
+
+/* Progress bars */
+.skill {
+  margin-bottom: 10px;
+}
+
+.skill span {
+  font-size: 1em; /* Reduzido de 0.7em */
+}
+
+.progress {
+  width: 100%;
+  background: #444;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #00ff99;
+}
+
+/* Conteúdo principal (ajustado para 60%) */
+.content {
+  width: 60%;
+  padding: 20px;
+  /* Removemos overflow-y para evitar scroll interno */
+}
+
+.content section {
+  margin-bottom: 20px;
+}
+
+.content h2 {
+  font-size: 1.1em; /* Reduzido de 1.2em */
+  border-bottom: 2px solid #00ff99;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.content p, .content ul {
+  font-size: 0.9em; /* Reduzido de 1em */
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.content ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.content a {
+  color: #00ff99;
+  text-decoration: none;
+}
+
+.content a:hover {
+  text-decoration: underline;
+}
+
+/* Ícones e links */
+.icon-container {
+  display: inline-flex;      /* Alinha ícone e texto lado a lado */
+  align-items: center;       /* Alinha verticalmente */
+  margin-right: 15px;        /* Espaço entre os grupos */
+}
+
+.icon-container a {
+  text-decoration: none;     /* Remove sublinhado */
+  color: #007bff;            /* Define cor azul para o texto */
+}
+
+.icon-container a:hover {
+  text-decoration: underline; /* Sublinha ao passar o mouse */
+}
+
+.icon {
+  width: 12px;               /* Tamanho do ícone */
+  height: 12px;
+  margin-right: 4px;         /* Espaço entre a imagem e o texto */
+  vertical-align: middle;
+}
+
+/* Zera margens/paddings extras do span, se houver */
+.icon-container a span {
+  margin: 0;
+  padding: 0;
+}
+
+/* Linha vertical para timeline */
+.timeline {
+  position: relative;
+  padding-left: 20px;
+  margin-left: 10px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #333;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: #333;
+  border-radius: 50%;
+}
+
+.year {
+  display: block;
+  font-size: 0.8em;
+  color: #555;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 800px) {
+  .page {
+    width: 90%;
+    height: auto;
+    flex-direction: column;
+  }
+  .sidebar, .content {
+    width: 100%;
+  }
+}
+EOF
+
