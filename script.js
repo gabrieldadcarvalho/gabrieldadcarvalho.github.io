@@ -30,13 +30,34 @@ document.addEventListener("DOMContentLoaded", function () {
     sections.forEach((section) => {
       // Tenta adicionar a seção à página corrente
       currentContent.appendChild(section);
+
       // Se o conteúdo ultrapassar o limite, remova a seção da página corrente,
       // crie uma nova página e adicione a seção nela
       if (currentContent.offsetHeight > pageHeight) {
         currentContent.removeChild(section);
-        currentPage = createNewPage();
-        pageWrapper.appendChild(currentPage);
-        currentContent = currentPage.querySelector(".content");
+
+        // Dividir o conteúdo da seção se necessário
+        let sectionClone = section.cloneNode(true);
+        let sectionContent = sectionClone.innerHTML;
+        section.innerHTML = "";
+
+        while (sectionContent.length > 0) {
+          let tempDiv = document.createElement("div");
+          tempDiv.innerHTML = sectionContent;
+          section.appendChild(tempDiv);
+
+          if (currentContent.offsetHeight > pageHeight) {
+            section.removeChild(tempDiv);
+            currentPage = createNewPage();
+            pageWrapper.appendChild(currentPage);
+            currentContent = currentPage.querySelector(".content");
+            sectionContent = tempDiv.innerHTML;
+            section.innerHTML = "";
+          } else {
+            sectionContent = "";
+          }
+        }
+
         currentContent.appendChild(section);
       }
     });
