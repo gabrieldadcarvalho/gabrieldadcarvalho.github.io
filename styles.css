@@ -131,6 +131,13 @@ body {
   text-decoration: underline;
 }
 
+.icon {
+    width: 16px;  /* Tamanho do ícone */
+    height: 16px;
+    margin-right: 8px;  /* Espaço entre o ícone e o texto */
+    vertical-align: middle;  /* Alinhar os ícones ao texto */
+}
+
 /* Responsividade para telas menores */
 @media (max-width: 800px) {
   .page {
