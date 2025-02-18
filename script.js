@@ -1,6 +1,6 @@
+// Animação de grafos dinâmicos com partículas (verde e roxo)
 const canvas = document.getElementById("backgroundCanvas");
 const ctx = canvas.getContext("2d");
-
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
@@ -63,21 +63,55 @@ function connectParticles() {
   }
 }
 
-function animate() {
+function animateParticles() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particlesArray.forEach((particle) => {
+  particlesArray.forEach(particle => {
     particle.update();
     particle.draw();
   });
   connectParticles();
-  requestAnimationFrame(animate);
+  requestAnimationFrame(animateParticles);
 }
 
 initParticles();
-animate();
+animateParticles();
 
 window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   initParticles();
 });
+
+// Função de paginação simples:
+// Se o conteúdo do <main class="content"> ultrapassar um limite (PAGE_HEIGHT),
+// as seções que excederem serão movidas para uma nova "folha" (nova div.page) criada dinamicamente.
+function paginate() {
+  const PAGE_HEIGHT = 1400; // altura máxima da página em px (deve ser igual à altura definida em .page)
+  const pagesContainer = document.getElementById("pages-container");
+  const firstPage = pagesContainer.querySelector(".page");
+  const contentArea = firstPage.querySelector(".content");
+  // Obtem todas as seções do conteúdo
+  const sections = Array.from(contentArea.querySelectorAll("section"));
+  let currentPage = firstPage;
+  
+  sections.forEach(section => {
+    // Se a altura do currentPage exceder o limite, cria uma nova página
+    if (currentPage.scrollHeight > PAGE_HEIGHT) {
+      // Cria nova página sem a sidebar (para manter o cabeçalho somente na primeira folha)
+      const newPage = document.createElement("div");
+      newPage.classList.add("page");
+      const newContainer = document.createElement("div");
+      newContainer.classList.add("container-content");
+      const newMain = document.createElement("main");
+      newMain.classList.add("content");
+      newContainer.appendChild(newMain);
+      newPage.appendChild(newContainer);
+      pagesContainer.appendChild(newPage);
+      currentPage = newPage;
+    }
+    // Move a seção atual para o currentPage
+    currentPage.querySelector(".content").appendChild(section);
+  });
+}
+
+window.addEventListener("load", paginate);
