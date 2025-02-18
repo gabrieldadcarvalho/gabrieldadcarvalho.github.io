@@ -28,7 +28,7 @@ body {
   z-index: 0;
 }
 
-/* Centraliza a folha A4 em coluna */
+/* Centraliza as folhas A4 empilhadas verticalmente */
 #pageWrapper {
   position: relative;
   z-index: 1;
@@ -227,7 +227,6 @@ body {
     height: auto;
     flex-direction: column;
   }
-
   .sidebar, .content {
     width: 100%;
   }
