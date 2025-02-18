@@ -8,7 +8,7 @@ html, body {
   width: 100%;
   height: 100%;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 14px;  /* Tamanho global das fontes */
+  font-size: 12px;  /* Tamanho global das fontes */
 }
 
 /* Fundo com animação */
