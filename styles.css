@@ -133,14 +133,14 @@ body {
 
 .icon-container {
     display: inline-flex; /* Alinha ícone e texto lado a lado */
-    align-items: center;  /* Alinha o ícone e o nome verticalmente */
+    align-items: center;  /* Alinha verticalmente o ícone e o nome */
     margin-right: 15px; /* Espaço entre os itens */
 }
 
 .icon {
-    width: 24px; /* Ajuste o tamanho do ícone conforme necessário */
+    width: 24px; /* Ajusta o tamanho do ícone conforme necessário */
     height: 24px;
-    margin-right: 8px; /* Espaço entre o ícone e o nome */
+    margin-right: 4px; /* Espaço entre o ícone e o nome, menor do que o anterior */
 }
 
 span {
@@ -148,6 +148,14 @@ span {
     font-weight: bold; /* Deixa o nome em negrito, se preferir */
 }
 
+a {
+    text-decoration: none; /* Remove o sublinhado do link */
+    color: #007bff; /* Adiciona cor azul ao texto dos links */
+}
+
+a:hover {
+    text-decoration: underline; /* Adiciona o sublinhado ao passar o mouse */
+}
 /* Responsividade para telas menores */
 @media (max-width: 800px) {
   .page {
