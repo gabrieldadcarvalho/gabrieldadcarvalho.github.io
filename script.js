@@ -117,3 +117,4 @@ function animate() {
     p.draw();
   });
   
+animate();
