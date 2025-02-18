@@ -131,11 +131,21 @@ body {
   text-decoration: underline;
 }
 
+.icon-container {
+    display: inline-flex; /* Alinha ícone e texto lado a lado */
+    align-items: center;  /* Alinha o ícone e o nome verticalmente */
+    margin-right: 15px; /* Espaço entre os itens */
+}
+
 .icon {
-    width: 16px;  /* Tamanho do ícone */
-    height: 16px;
-    margin-right: 8px;  /* Espaço entre o ícone e o texto */
-    vertical-align: middle;  /* Alinhar os ícones ao texto */
+    width: 24px; /* Ajuste o tamanho do ícone conforme necessário */
+    height: 24px;
+    margin-right: 8px; /* Espaço entre o ícone e o nome */
+}
+
+span {
+    font-size: 14px; /* Ajusta o tamanho do nome */
+    font-weight: bold; /* Deixa o nome em negrito, se preferir */
 }
 
 /* Responsividade para telas menores */
