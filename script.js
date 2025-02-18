@@ -10,14 +10,16 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function autoPaginate() {
-    let content = document.getElementById("content");
+    // Pega as seções originais, ignorando elementos com classe "page-break"
+    let contentContainer = document.getElementById("content");
+    let sections = Array.from(contentContainer.children).filter(
+      el => !el.classList.contains("page-break")
+    );
+
     let pageWrapper = document.getElementById("pageWrapper");
-    let sections = Array.from(content.children);
-    
-    // Limpa as páginas existentes
     pageWrapper.innerHTML = "";
 
-    // Define a altura da página A4 em pixels (297mm)
+    // Define a altura da página A4 em pixels (1mm ≈ 3.77953px)
     let pageHeight = 297 * 3.77953;
 
     // Cria a primeira página
@@ -25,13 +27,13 @@ document.addEventListener("DOMContentLoaded", function () {
     pageWrapper.appendChild(currentPage);
     let currentContent = currentPage.querySelector(".content");
 
-    // Percorre cada seção e adiciona à página corrente
     sections.forEach((section) => {
+      // Tenta adicionar a seção à página corrente
       currentContent.appendChild(section);
+      // Se o conteúdo ultrapassar o limite, remova a seção da página corrente,
+      // crie uma nova página e adicione a seção nela
       if (currentContent.offsetHeight > pageHeight) {
-        // Remove a seção da página atual
         currentContent.removeChild(section);
-        // Cria nova página e adiciona a seção nela
         currentPage = createNewPage();
         pageWrapper.appendChild(currentPage);
         currentContent = currentPage.querySelector(".content");
@@ -54,7 +56,7 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
 
-const colors = ["#00ff99", "#8e44ad"]; // verde e roxo
+const colors = ["#00ff99", "#8e44ad"];
 const numParticles = 80;
 const maxDistance = 150;
 let particles = [];
@@ -118,4 +120,3 @@ function animate() {
   requestAnimationFrame(animate);
 }
 animate();
-EOF
