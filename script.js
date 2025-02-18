@@ -1,9 +1,12 @@
+cat << 'EOF' > script.js
 document.addEventListener("DOMContentLoaded", function () {
-  // Função para criar uma nova página (com sidebar e área de conteúdo)
+  // Armazena o HTML original da sidebar antes de limpar o wrapper
+  const originalSidebarHTML = document.querySelector(".sidebar").innerHTML;
+
   function createNewPage() {
     let newPage = document.createElement("div");
     newPage.classList.add("page");
-    newPage.innerHTML = `<div class="sidebar">${document.querySelector(".sidebar").innerHTML}</div><div class="content"></div>`;
+    newPage.innerHTML = `<div class="sidebar">${originalSidebarHTML}</div><div class="content"></div>`;
     return newPage;
   }
 
@@ -15,9 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Limpa as páginas existentes
     pageWrapper.innerHTML = "";
 
-    // Define a altura da página A4 em pixels (1mm ≈ 3.77953px)
+    // Define a altura da página A4 em pixels (297mm)
     let pageHeight = 297 * 3.77953;
-    
+
     // Cria a primeira página
     let currentPage = createNewPage();
     pageWrapper.appendChild(currentPage);
@@ -26,9 +29,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Percorre cada seção e adiciona à página corrente
     sections.forEach((section) => {
       currentContent.appendChild(section);
-      // Se o conteúdo exceder a altura da página, remova a seção e crie uma nova página
       if (currentContent.offsetHeight > pageHeight) {
+        // Remove a seção da página atual
         currentContent.removeChild(section);
+        // Cria nova página e adiciona a seção nela
         currentPage = createNewPage();
         pageWrapper.appendChild(currentPage);
         currentContent = currentPage.querySelector(".content");
@@ -40,9 +44,10 @@ document.addEventListener("DOMContentLoaded", function () {
   autoPaginate();
 });
 
-// Código da animação de partículas permanece inalterado
+// Código de animação de partículas
 const canvas = document.getElementById("backgroundCanvas");
 const ctx = canvas.getContext("2d");
+
 function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -114,3 +119,4 @@ function animate() {
   requestAnimationFrame(animate);
 }
 animate();
+EOF
