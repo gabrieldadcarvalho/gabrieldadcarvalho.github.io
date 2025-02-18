@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Armazena o HTML original da sidebar antes de limpar o wrapper
+  // Armazena o HTML original da sidebar
   const originalSidebarHTML = document.querySelector(".sidebar").innerHTML;
 
   function createNewPage() {
@@ -7,6 +7,35 @@ document.addEventListener("DOMContentLoaded", function () {
     newPage.classList.add("page");
     newPage.innerHTML = `<div class="sidebar">${originalSidebarHTML}</div><div class="content"></div>`;
     return newPage;
+  }
+
+  // Função que "divide" uma seção caso ela não caiba inteiramente na página atual
+  function splitSection(section, availableSpace, pageHeight, currentContent, pageWrapper) {
+    // Cria um novo container para os elementos da seção que couberem na página
+    let newSection = document.createElement(section.tagName);
+    newSection.className = section.className;
+    // Obtem os nós filhos (incluindo texto e elementos)
+    let children = Array.from(section.childNodes);
+    
+    children.forEach(child => {
+      newSection.appendChild(child);
+      currentContent.appendChild(newSection);
+      // Se ultrapassar o espaço disponível...
+      if (currentContent.offsetHeight > pageHeight) {
+        // Remova o último nó adicionado
+        newSection.removeChild(child);
+        // Cria uma nova página para continuar
+        let newPageObj = createNewPage();
+        pageWrapper.appendChild(newPageObj);
+        currentContent = newPageObj.querySelector(".content");
+        // Cria um novo container para a continuação da seção
+        newSection = document.createElement(section.tagName);
+        newSection.className = section.className;
+        // Adiciona o nó que não coube na nova página
+        newSection.appendChild(child);
+        currentContent.appendChild(newSection);
+      }
+    });
   }
 
   function autoPaginate() {
@@ -20,29 +49,26 @@ document.addEventListener("DOMContentLoaded", function () {
     // Limpa o wrapper para iniciar a paginação
     pageWrapper.innerHTML = "";
 
-    // Define a altura da página A4 em pixels (1mm ≈ 3.77953px)
+    // Altura da página A4 em pixels (1mm ≈ 3.77953px)
     let pageHeight = 297 * 3.77953;
 
     // Cria a primeira página
     let currentPage = createNewPage();
     pageWrapper.appendChild(currentPage);
     let currentContent = currentPage.querySelector(".content");
-    let currentPageHeight = 0;
 
-    // Para cada seção, verifica se ela cabe na página atual
-    sections.forEach((section) => {
-      // Obtenha a altura da seção
-      let sectionHeight = section.offsetHeight;
-      // Se a seção não couber na página atual, cria uma nova página
-      if (currentPageHeight + sectionHeight > pageHeight) {
-        currentPage = createNewPage();
-        pageWrapper.appendChild(currentPage);
-        currentContent = currentPage.querySelector(".content");
-        currentPageHeight = 0;
+    sections.forEach(section => {
+      // Clone completo da seção para testar se ela cabe
+      let fullClone = section.cloneNode(true);
+      currentContent.appendChild(fullClone);
+      if (currentContent.offsetHeight <= pageHeight) {
+        // Se couber, a seção é mantida e continuamos
+        return;
+      } else {
+        // Se não couber, remova o clone e faça a divisão da seção
+        currentContent.removeChild(fullClone);
+        splitSection(section, pageHeight - currentContent.offsetHeight, pageHeight, currentContent, pageWrapper);
       }
-      // Adiciona a seção na página atual e atualiza a altura acumulada
-      currentContent.appendChild(section);
-      currentPageHeight += section.offsetHeight;
     });
   }
 
