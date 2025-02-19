@@ -1,43 +1,9 @@
+// Como agora queremos uma página contínua, removemos a função de paginação
+// e mantemos o conteúdo conforme definido no index.html.
+
 document.addEventListener("DOMContentLoaded", function () {
-  // Armazena o HTML original da sidebar
-  const originalSidebarHTML = document.querySelector(".sidebar").innerHTML;
-
-  function createNewPage() {
-    let newPage = document.createElement("div");
-    newPage.classList.add("page");
-    newPage.innerHTML = `<div class="sidebar">${originalSidebarHTML}</div><div class="content"></div>`;
-    return newPage;
-  }
-
-  function autoPaginate() {
-    // Captura todas as seções do conteúdo original
-    let contentContainer = document.getElementById("content");
-    let sections = Array.from(contentContainer.children).filter(
-      el => !el.classList.contains("page-break")
-    );
-    
-    let pageWrapper = document.getElementById("pageWrapper");
-    pageWrapper.innerHTML = "";
-    
-    // Define a altura da página A4 em pixels (1mm ≈ 3.77953px)
-    let pageHeight = 297 * 3.77953; // Aproximadamente 1122px
-    let currentPage = createNewPage();
-    pageWrapper.appendChild(currentPage);
-    let currentContent = currentPage.querySelector(".content");
-
-    // Para cada seção, se a seção inteira não couber na página atual,
-    // cria uma nova página e move a seção inteira para ela.
-    sections.forEach(section => {
-      if (currentContent.offsetHeight + section.offsetHeight > pageHeight) {
-        currentPage = createNewPage();
-        pageWrapper.appendChild(currentPage);
-        currentContent = currentPage.querySelector(".content");
-      }
-      currentContent.appendChild(section);
-    });
-  }
-
-  autoPaginate();
+  // Se necessário, qualquer lógica adicional pode ser adicionada aqui.
+  // Atualmente, o conteúdo não é dividido, ficando tudo em uma única página contínua.
 });
 
 // Código de animação de partículas
