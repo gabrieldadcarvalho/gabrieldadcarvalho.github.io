@@ -9,7 +9,7 @@ html, body {
   width: 100%;
   height: 100%;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;  /* Tamanho global das fontes */
+  font-size: 12px;
 }
 
 /* Fundo com animação */
@@ -40,7 +40,7 @@ body {
   gap: 20px;
 }
 
-/* Contêiner com dimensões aproximadas de uma folha A4, mas com altura automática */
+/* Página com altura automática (cresce conforme o conteúdo) */
 .page {
   width: 210mm;
   height: auto;
@@ -116,7 +116,6 @@ body {
 .content {
   width: 60%;
   padding: 20px;
-  /* Deixa a altura automática para que a página se expanda conforme o conteúdo */
   height: auto;
 }
 
@@ -174,7 +173,7 @@ body {
   vertical-align: middle;
 }
 
-/* Linha vertical para timeline */
+/* Timeline */
 .timeline {
   position: relative;
   padding-left: 20px;
@@ -184,39 +183,49 @@ body {
 .timeline::before {
   content: "";
   position: absolute;
-  left: 10px;
+  left: 15px;
   top: 0;
   bottom: 0;
-  width: 2px;
+  width: 1px;
   background-color: #333;
 }
 
 .timeline-item {
   position: relative;
   margin-bottom: 20px;
-  padding-left: 20px;
+  padding-left: 40px;
 }
 
 .timeline-item::before {
   content: "";
   position: absolute;
-  left: -10px;
+  left: 15px;
   top: 5px;
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 6px;
   background-color: #333;
   border-radius: 50%;
+  transform: translateX(-50%);
 }
 
+/* Posiciona o ano à esquerda do círculo */
 .year {
-  display: block;
+  position: absolute;
+  right: 100%;
+  margin-right: 10px;
   font-size: 0.8em;
   color: #555;
-  margin-bottom: 5px;
-  font-weight: bold;
+  white-space: nowrap;
 }
 
-/* Responsividade */
+/* Linha fina conectando datas dentro da mesma timeline-item (opcional) */
+.year::after {
+  content: "";
+  display: block;
+  border-bottom: 1px solid #555;
+  margin-top: 2px;
+}
+
 @media (max-width: 800px) {
   .page {
     width: 90%;
