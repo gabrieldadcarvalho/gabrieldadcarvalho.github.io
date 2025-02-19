@@ -211,10 +211,11 @@ body {
 /* Novo estilo para as datas com duas informações */
 .date-container {
   position: absolute;
-  left: -80px; /* Ajuste conforme necessário */
+  left: -30px;  /* Mais próximo da linha */
   top: 0;
   text-align: right;
   line-height: 1.2;
+  font-size: 10px;  /* Tamanho reduzido */
 }
 
 .date-start,
@@ -225,7 +226,7 @@ body {
 .date-line {
   display: block;
   width: 1px;
-  height: 20px; /* Altura da linha entre as datas */
+  height: 20px;  /* Altura da linha entre as datas */
   background-color: #555;
   margin: 2px auto;
 }
