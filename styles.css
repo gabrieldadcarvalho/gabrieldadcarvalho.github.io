@@ -9,10 +9,10 @@ html, body {
   width: 100%;
   height: 100%;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;  /* Tamanho global das fontes */
+  font-size: 12px;
 }
 
-/* Fundo com animação */
+/* Fundo */
 body {
   background: #DCDCDC;
   position: relative;
@@ -40,7 +40,7 @@ body {
   gap: 20px;
 }
 
-/* Contêiner com dimensões aproximadas de uma folha A4 */
+/* Página */
 .page {
   width: 210mm;
   min-height: 297mm;
@@ -48,8 +48,9 @@ body {
   color: #000;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-content: flex-start;
+  flex-wrap: wrap;
   overflow: visible;
   padding: 20px;
 }
@@ -124,19 +125,25 @@ body {
   margin-bottom: 20px;
 }
 
-/* Evita que experiência seja cortada entre páginas */
+/* Experiência - evita cortes e empurrões */
 .experiencia {
   break-inside: avoid;
   page-break-inside: avoid;
+  padding-bottom: 15px;
 }
 
+/* Histórico Escolar - só entra na próxima página após as experiências terminarem */
+.historico-escolar {
+  break-before: always;
+  page-break-before: always;
+}
+
+/* Cabeçalhos */
 .content h2 {
   font-size: 1.1em;
   border-bottom: 2px solid #00ff99;
   padding-bottom: 5px;
   margin-bottom: 10px;
-  break-inside: avoid;
-  page-break-inside: avoid;
 }
 
 .content p, .content ul {
@@ -182,7 +189,7 @@ body {
   vertical-align: middle;
 }
 
-/* Linha vertical para timeline */
+/* Timeline */
 .timeline {
   position: relative;
   padding-left: 20px;
@@ -224,7 +231,7 @@ body {
   font-weight: bold;
 }
 
-/* Responsividade para telas menores */
+/* Responsividade */
 @media (max-width: 800px) {
   .page {
     width: 90%;
