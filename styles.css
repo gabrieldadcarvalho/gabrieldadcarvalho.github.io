@@ -205,19 +205,21 @@ body {
   height: 6px;
   background-color: #333;
   border-radius: 50%;
-  margin-left: -3px; /* Centraliza o círculo na linha (15px - 3px = 12px, fazendo o centro ser 15px) */
+  margin-left: -3px;
 }
 
-/* Novo estilo para as datas com duas informações */
+/* Estilo para o contêiner de datas */
+/* A data-container é posicionada à direita, com a margem-right para alinhar ao centro do ponto */
 .date-container {
   position: absolute;
-  left: -25px; /* Aproxima as datas da linha */
+  right: calc(100% - 15px);
   top: 0;
-  text-align: right;
+  text-align: center;
+  font-size: 10px;
   line-height: 1;
-  font-size: 10px;  /* Tamanho reduzido */
 }
 
+/* As datas ficam empilhadas: a data inicial acima da final, com uma linha vertical entre elas */
 .date-start,
 .date-end {
   display: block;
@@ -226,7 +228,7 @@ body {
 .date-line {
   display: block;
   width: 1px;
-  height: 16px; /* Altura da linha entre as datas */
+  height: 16px;
   background-color: #555;
   margin: 2px auto;
 }
