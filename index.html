@@ -19,10 +19,10 @@
   <!-- Canvas do fundo com a animação -->
   <canvas id="backgroundCanvas"></canvas>
 
-  <!-- Wrapper que centraliza as folhas A4 empilhadas verticalmente -->
+  <!-- Wrapper que centraliza a única página contínua -->
   <div id="pageWrapper">
     <div class="page">
-      <!-- Área da folha dividida em sidebar e conteúdo -->
+      <!-- Sidebar fixa -->
       <aside class="sidebar">
         <img src="imagens/foto.png" alt="Gabriel D'assumpção de Carvalho" class="profile-pic">
         <h1>Gabriel D'assumpção de Carvalho</h1>
@@ -66,13 +66,12 @@
           </div>
         </div>
       </aside>
-      <!-- O main com id="content" contém todas as seções que serão redistribuídas entre as páginas -->
+      <!-- Conteúdo principal (todo o conteúdo fica aqui e a página cresce) -->
       <main class="content" id="content">
         <section class="sobre-mim">
           <h2>Sobre Mim</h2>
           <p>Como estudante de Ciências Atuariais na UFPE, nutro um profundo interesse nesta área que engloba probabilidade, estatística, demografia e matemática financeira. Busco constantemente aprimorar meu conhecimento e habilidades tanto no âmbito acadêmico quanto no prático, com o objetivo de evoluir pessoalmente e profissionalmente nas áreas da ciência atuarial e empresarial. Além disso, venho me familiarizando com ferramentas essenciais para análise de dados, como Office, Python, R, Inteligência Artificial e Notion.</p>
         </section>
-        <div class="page-break"></div>
         <section class="cursos">
           <h2>Cursos</h2>
           <div class="timeline">
@@ -114,7 +113,7 @@
             </div>
           </div>
         </section>
-        <div class="producoes">
+        <section class="producoes">
           <h2>Produções</h2>
           <ul>
             <li><a href="https://www.instagram.com/investidordapeste" target="_blank">Instagram - Investidor da Peste</a></li>
@@ -124,8 +123,7 @@
             <li><a href="https://ligaufrn.streamlit.app/" target="_blank">Streamlit - Liga UFRN</a></li>
             <li><a href="https://encurtador.com.br/HOEtn" target="_blank">Business Case - Sul América</a></li>
           </ul>
-        </div>
-        <div class="page-break"></div>
+        </section>
         <section class="experiencia">
           <h2>Experiência</h2>
           <div class="experiencia-item">
@@ -150,7 +148,6 @@
             </ul>
           </div>
         </section>
-        <div class="page-break"></div>
         <section class="historico-academico">
           <h2>Histórico Acadêmico</h2>
           <p><strong>Ensino Médio 2017-2019</strong><br>Colégio Motivo - Caruaru</p>
