@@ -9,35 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return newPage;
   }
 
-  // Função que "divide" uma seção caso ela não caiba inteiramente na página atual
-  function splitSection(section, availableSpace, pageHeight, currentContent, pageWrapper) {
-    // Cria um novo container para os elementos da seção que couberem na página
-    let newSection = document.createElement(section.tagName);
-    newSection.className = section.className;
-    // Obtem os nós filhos (incluindo texto e elementos)
-    let children = Array.from(section.childNodes);
-    
-    children.forEach(child => {
-      newSection.appendChild(child);
-      currentContent.appendChild(newSection);
-      // Se ultrapassar o espaço disponível...
-      if (currentContent.offsetHeight > pageHeight) {
-        // Remova o último nó adicionado
-        newSection.removeChild(child);
-        // Cria uma nova página para continuar
-        let newPageObj = createNewPage();
-        pageWrapper.appendChild(newPageObj);
-        currentContent = newPageObj.querySelector(".content");
-        // Cria um novo container para a continuação da seção
-        newSection = document.createElement(section.tagName);
-        newSection.className = section.className;
-        // Adiciona o nó que não coube na nova página
-        newSection.appendChild(child);
-        currentContent.appendChild(newSection);
-      }
-    });
-  }
-
   function autoPaginate() {
     // Captura todas as seções do conteúdo original
     let contentContainer = document.getElementById("content");
@@ -46,29 +17,23 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
     let pageWrapper = document.getElementById("pageWrapper");
-    // Limpa o wrapper para iniciar a paginação
     pageWrapper.innerHTML = "";
 
-    // Altura da página A4 em pixels (1mm ≈ 3.77953px)
-    let pageHeight = 297 * 3.77953;
-
-    // Cria a primeira página
+    // Definindo a altura da página (em pixels)
+    let pageHeight = 297 * 3.77953; // Aproximadamente 1122px
     let currentPage = createNewPage();
     pageWrapper.appendChild(currentPage);
     let currentContent = currentPage.querySelector(".content");
 
     sections.forEach(section => {
-      // Clone completo da seção para testar se ela cabe
-      let fullClone = section.cloneNode(true);
-      currentContent.appendChild(fullClone);
-      if (currentContent.offsetHeight <= pageHeight) {
-        // Se couber, a seção é mantida e continuamos
-        return;
-      } else {
-        // Se não couber, remova o clone e faça a divisão da seção
-        currentContent.removeChild(fullClone);
-        splitSection(section, pageHeight - currentContent.offsetHeight, pageHeight, currentContent, pageWrapper);
+      // Verifica se a seção cabe inteira na página atual
+      if (currentContent.offsetHeight + section.offsetHeight > pageHeight) {
+        // Se não couber, cria uma nova página e adiciona a seção lá
+        currentPage = createNewPage();
+        pageWrapper.appendChild(currentPage);
+        currentContent = currentPage.querySelector(".content");
       }
+      currentContent.appendChild(section);
     });
   }
 
