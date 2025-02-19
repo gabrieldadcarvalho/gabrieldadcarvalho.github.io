@@ -9,7 +9,7 @@ html, body {
   width: 100%;
   height: 100%;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
+  font-size: 12px;  /* Tamanho global das fontes */
 }
 
 /* Fundo com animação */
@@ -208,24 +208,29 @@ body {
   transform: translateX(-50%);
 }
 
-/* Posiciona o ano à esquerda do círculo */
-.year {
+/* Novo estilo para as datas com duas informações */
+.date-container {
   position: absolute;
-  right: 100%;
-  margin-right: 10px;
-  font-size: 0.8em;
-  color: #555;
-  white-space: nowrap;
+  left: -80px; /* Ajuste conforme necessário */
+  top: 0;
+  text-align: right;
+  line-height: 1.2;
 }
 
-/* Linha fina conectando datas dentro da mesma timeline-item (opcional) */
-.year::after {
-  content: "";
+.date-start,
+.date-end {
   display: block;
-  border-bottom: 1px solid #555;
-  margin-top: 2px;
 }
 
+.date-line {
+  display: block;
+  width: 1px;
+  height: 20px; /* Altura da linha entre as datas */
+  background-color: #555;
+  margin: 2px auto;
+}
+
+/* Responsividade */
 @media (max-width: 800px) {
   .page {
     width: 90%;
