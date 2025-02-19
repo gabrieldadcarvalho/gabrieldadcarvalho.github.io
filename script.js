@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Armazena o HTML original da sidebar
   const originalSidebarHTML = document.querySelector(".sidebar").innerHTML;
 
   function createNewPage() {
@@ -9,45 +10,30 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function autoPaginate() {
+    // Captura todas as seções do conteúdo original
     let contentContainer = document.getElementById("content");
     let sections = Array.from(contentContainer.children).filter(
       el => !el.classList.contains("page-break")
     );
-
+    
     let pageWrapper = document.getElementById("pageWrapper");
     pageWrapper.innerHTML = "";
-
-    let pageHeight = 297 * 3.77953; // Approximately 1122px
+    
+    // Define a altura da página A4 em pixels (1mm ≈ 3.77953px)
+    let pageHeight = 297 * 3.77953; // Aproximadamente 1122px
     let currentPage = createNewPage();
     pageWrapper.appendChild(currentPage);
     let currentContent = currentPage.querySelector(".content");
 
+    // Para cada seção, se a seção inteira não couber na página atual,
+    // cria uma nova página e move a seção inteira para ela.
     sections.forEach(section => {
-      let sectionClone = section.cloneNode(true);
-      currentContent.appendChild(sectionClone);
-
-      while (currentContent.scrollHeight > pageHeight) {
-        let overflowElements = [];
-
-        while (currentContent.scrollHeight > pageHeight) {
-          let lastChild = sectionClone.lastElementChild;
-          if (lastChild) {
-            overflowElements.unshift(lastChild);
-            sectionClone.removeChild(lastChild);
-          } else {
-            break;
-          }
-        }
-
+      if (currentContent.offsetHeight + section.offsetHeight > pageHeight) {
         currentPage = createNewPage();
         pageWrapper.appendChild(currentPage);
         currentContent = currentPage.querySelector(".content");
-
-        let newSection = document.createElement(section.tagName);
-        overflowElements.forEach(element => newSection.appendChild(element));
-        sectionClone = newSection;
-        currentContent.appendChild(sectionClone);
       }
+      currentContent.appendChild(section);
     });
   }
 
