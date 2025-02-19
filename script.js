@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Armazena o HTML original da sidebar
   const originalSidebarHTML = document.querySelector(".sidebar").innerHTML;
 
   function createNewPage() {
@@ -10,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function autoPaginate() {
-    // Captura todas as seções do conteúdo original
     let contentContainer = document.getElementById("content");
     let sections = Array.from(contentContainer.children).filter(
       el => !el.classList.contains("page-break")
@@ -19,21 +17,37 @@ document.addEventListener("DOMContentLoaded", function () {
     let pageWrapper = document.getElementById("pageWrapper");
     pageWrapper.innerHTML = "";
 
-    // Definindo a altura da página (em pixels)
-    let pageHeight = 297 * 3.77953; // Aproximadamente 1122px
+    let pageHeight = 297 * 3.77953; // Approximately 1122px
     let currentPage = createNewPage();
     pageWrapper.appendChild(currentPage);
     let currentContent = currentPage.querySelector(".content");
 
     sections.forEach(section => {
-      // Verifica se a seção cabe inteira na página atual
-      if (currentContent.offsetHeight + section.offsetHeight > pageHeight) {
-        // Se não couber, cria uma nova página e adiciona a seção lá
+      let sectionClone = section.cloneNode(true);
+      currentContent.appendChild(sectionClone);
+
+      while (currentContent.scrollHeight > pageHeight) {
+        let overflowElements = [];
+
+        while (currentContent.scrollHeight > pageHeight) {
+          let lastChild = sectionClone.lastElementChild;
+          if (lastChild) {
+            overflowElements.unshift(lastChild);
+            sectionClone.removeChild(lastChild);
+          } else {
+            break;
+          }
+        }
+
         currentPage = createNewPage();
         pageWrapper.appendChild(currentPage);
         currentContent = currentPage.querySelector(".content");
+
+        let newSection = document.createElement(section.tagName);
+        overflowElements.forEach(element => newSection.appendChild(element));
+        sectionClone = newSection;
+        currentContent.appendChild(sectionClone);
       }
-      currentContent.appendChild(section);
     });
   }
 
