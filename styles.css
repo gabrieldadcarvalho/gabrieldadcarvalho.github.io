@@ -176,14 +176,14 @@ body {
 /* Timeline */
 .timeline {
   position: relative;
-  padding-left: 20px; /* Ajuste para alinhar com os pontos */
-  margin-left: 30px; /* Move a timeline um pouco para a direita */
+  padding-left: 40px; /* Increased padding to adjust for date-container */
+  margin-left: 10px; /* Adjusted margin */
 }
 
 .timeline::before {
   content: "";
   position: absolute;
-  left: 10px; /* Move a linha para o centro do ponto */
+  left: 30px; /* Adjusted left position */
   top: 0;
   bottom: 0;
   width: 2px;
@@ -193,30 +193,30 @@ body {
 .timeline-item {
   position: relative;
   margin-bottom: 20px;
-  padding-left: 30px;
+  padding-left: 50px; /* Adjusted padding */
 }
 
 .timeline-item::before {
   content: "";
   position: absolute;
-  left: 10px; /* Mantém o ponto alinhado com a linha */
+  left: 30px; /* Adjusted left position */
   top: 5px;
   width: 10px;
   height: 10px;
   background-color: #333;
   border-radius: 50%;
-  transform: translateX(-50%); /* Garante que o ponto fique centralizado na linha */
+  transform: translateX(-50%);
 }
 
-/* Ajuste do contêiner das datas */
+/* Adjust date container */
 .date-container {
   position: absolute;
-  left: -50px; /* Move as datas para a esquerda */
+  left: -70px; /* Adjusted left position */
   top: 0;
-  text-align: right; /* Alinha o texto das datas à direita */
+  text-align: right;
   font-size: 10px;
   line-height: 1;
-  width: 40px; /* Define um espaço fixo para as datas */
+  width: 60px; /* Adjusted width */
 }
 
 /* As datas ficam empilhadas */
