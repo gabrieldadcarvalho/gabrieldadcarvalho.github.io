@@ -9,7 +9,7 @@ html, body {
   width: 100%;
   height: 100%;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;  /* Tamanho global das fontes */
+  font-size: 12px;
 }
 
 /* Fundo com animação */
@@ -205,16 +205,16 @@ body {
   height: 6px;
   background-color: #333;
   border-radius: 50%;
-  transform: translateX(-50%);
+  margin-left: -3px; /* Centraliza o círculo na linha (15px - 3px = 12px, fazendo o centro ser 15px) */
 }
 
 /* Novo estilo para as datas com duas informações */
 .date-container {
   position: absolute;
-  left: -30px;  /* Mais próximo da linha */
+  left: -25px; /* Aproxima as datas da linha */
   top: 0;
   text-align: right;
-  line-height: 1.2;
+  line-height: 1;
   font-size: 10px;  /* Tamanho reduzido */
 }
 
@@ -226,7 +226,7 @@ body {
 .date-line {
   display: block;
   width: 1px;
-  height: 20px;  /* Altura da linha entre as datas */
+  height: 16px; /* Altura da linha entre as datas */
   background-color: #555;
   margin: 2px auto;
 }
