@@ -218,17 +218,6 @@ body {
   line-height: 1;
 }
 
-/* Estilo para o contêiner de datas */
-/* A data-container é posicionada à direita, com a margem-right para alinhar ao centro do ponto */
-.date-container {
-  position: absolute;
-  right: calc(100% - 15px);
-  top: 0;
-  text-align: center;
-  font-size: 10px;
-  line-height: 1;
-}
-
 /* As datas ficam empilhadas: a data inicial acima da final, com uma linha vertical entre elas */
 .date-start,
 .date-end {
