@@ -1,9 +1,6 @@
-// Como agora queremos uma página contínua, removemos a função de paginação
-// e mantemos o conteúdo conforme definido no index.html.
-
 document.addEventListener("DOMContentLoaded", function () {
-  // Se necessário, qualquer lógica adicional pode ser adicionada aqui.
-  // Atualmente, o conteúdo não é dividido, ficando tudo em uma única página contínua.
+  // Como a página agora é contínua, não há função de paginação.
+  // Todo o conteúdo permanece conforme definido no index.html.
 });
 
 // Código de animação de partículas
