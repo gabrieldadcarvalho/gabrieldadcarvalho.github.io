@@ -146,52 +146,67 @@ body {
   margin-right: 4px;
   vertical-align: middle;
 }
-/* Timeline */
+
+/* Timeline - New Implementation */
 .timeline {
   position: relative;
-  padding-left: 40px;
-  margin-left: 10px;
+  padding-left: 15px;
+  margin-left: 20px;
 }
+
 .timeline::before {
   content: "";
   position: absolute;
-  left: 30px;
+  left: 7px;
   top: 0;
   bottom: 0;
   width: 2px;
   background-color: #333;
 }
+
 .timeline-item {
   position: relative;
   margin-bottom: 20px;
-  padding-left: 50px;
+  padding-left: 30px;
+  list-style: none;
 }
+
 .timeline-item::before {
-  content: "";
+  content: '\25CF'; /* Unicode for a filled circle */
   position: absolute;
-  left: 31px; /* Adjusted to match timeline::before */
-  top: 5px;
-  width: 10px;
-  height: 10px;
-  background-color: #333;
-  border-radius: 50%;
-  transform: translateX(-50%); /* This centers the point on the line */
+  left: 0;
+  top: 0;
+  font-size: 14px;
+  color: #333;
+  z-index: 1;
+  line-height: 1;
 }
+
+.timeline .timeline-item:first-child::before {
+  top: 0;
+}
+
+.timeline .timeline-item:last-child::before {
+  top: 0;
+}
+
 /* Adjust date container */
 .date-container {
   position: absolute;
-  left: -70px;
+  left: -80px;
   top: 0;
   text-align: right;
   font-size: 10px;
   line-height: 1;
-  width: 60px;
+  width: 70px;
 }
+
 /* As datas ficam empilhadas */
 .date-start,
 .date-end {
   display: block;
 }
+
 .date-line {
   display: block;
   width: 2px;
@@ -199,6 +214,7 @@ body {
   background-color: #555;
   margin: 2px auto;
 }
+
 /* Responsividade */
 @media (max-width: 800px) {
   .page {
