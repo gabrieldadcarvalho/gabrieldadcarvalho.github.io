@@ -9,10 +9,10 @@ html, body {
   width: 100%;
   height: 100%;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
+  font-size: 12px;  /* Tamanho global das fontes */
 }
 
-/* Fundo */
+/* Fundo com animação */
 body {
   background: #DCDCDC;
   position: relative;
@@ -40,19 +40,17 @@ body {
   gap: 20px;
 }
 
-/* Página */
+/* Contêiner com dimensões aproximadas de uma folha A4 */
 .page {
   width: 210mm;
-  min-height: 297mm;
+  height: 297mm;
   background: #FFFFFF;
   color: #000;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   display: flex;
-  flex-direction: column;
-  align-content: flex-start;
-  flex-wrap: wrap;
-  overflow: visible;
-  padding: 20px;
+  /* Mantém a estrutura lado a lado (sidebar e conteúdo) */
+  flex-direction: row;
+  overflow: hidden;
 }
 
 /* Sidebar */
@@ -119,26 +117,13 @@ body {
 .content {
   width: 60%;
   padding: 20px;
+  /* Não usamos overflow-y para evitar scroll interno na folha */
 }
 
 .content section {
   margin-bottom: 20px;
 }
 
-/* Experiência - evita cortes e empurrões */
-.experiencia {
-  break-inside: avoid;
-  page-break-inside: avoid;
-  padding-bottom: 15px;
-}
-
-/* Histórico Escolar - só entra na próxima página após as experiências terminarem */
-.historico-escolar {
-  break-before: always;
-  page-break-before: always;
-}
-
-/* Cabeçalhos */
 .content h2 {
   font-size: 1.1em;
   border-bottom: 2px solid #00ff99;
@@ -189,7 +174,7 @@ body {
   vertical-align: middle;
 }
 
-/* Timeline */
+/* Linha vertical para timeline */
 .timeline {
   position: relative;
   padding-left: 20px;
@@ -231,7 +216,7 @@ body {
   font-weight: bold;
 }
 
-/* Responsividade */
+/* Responsividade para telas menores */
 @media (max-width: 800px) {
   .page {
     width: 90%;
