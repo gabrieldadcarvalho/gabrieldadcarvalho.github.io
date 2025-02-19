@@ -173,52 +173,53 @@ body {
   vertical-align: middle;
 }
 
-/* Timeline - Ajuste para centralizar a linha com os pontos */
+/* Timeline */
 .timeline {
   position: relative;
-  padding-left: 30px; /* Aumentado para dar mais espaço */
-  margin-left: 10px;
+  padding-left: 20px; /* Ajuste para alinhar com os pontos */
+  margin-left: 30px; /* Move a timeline um pouco para a direita */
 }
 
 .timeline::before {
   content: "";
   position: absolute;
-  left: 0; /* Ajustado para alinhar com o centro do ponto */
+  left: 10px; /* Move a linha para o centro do ponto */
   top: 0;
   bottom: 0;
-  width: 1px;
+  width: 2px;
   background-color: #333;
 }
 
 .timeline-item {
   position: relative;
   margin-bottom: 20px;
-  padding-left: 30px; /* Ajustado para manter o texto na mesma posição */
+  padding-left: 30px;
 }
 
 .timeline-item::before {
   content: "";
   position: absolute;
-  left: 0; /* Alinhado com a linha vertical */
+  left: 10px; /* Mantém o ponto alinhado com a linha */
   top: 5px;
-  width: 6px;
-  height: 6px;
+  width: 10px;
+  height: 10px;
   background-color: #333;
   border-radius: 50%;
-  margin-left: -3px; /* Centraliza o ponto na linha (metade da largura) */
+  transform: translateX(-50%); /* Garante que o ponto fique centralizado na linha */
 }
 
-/* Ajuste para o contêiner de datas acompanhar as mudanças */
+/* Ajuste do contêiner das datas */
 .date-container {
   position: absolute;
-  right: calc(100% - 0px); /* Ajustado para acompanhar a nova posição da linha */
+  left: -50px; /* Move as datas para a esquerda */
   top: 0;
-  text-align: center;
+  text-align: right; /* Alinha o texto das datas à direita */
   font-size: 10px;
   line-height: 1;
+  width: 40px; /* Define um espaço fixo para as datas */
 }
 
-/* As datas ficam empilhadas: a data inicial acima da final, com uma linha vertical entre elas */
+/* As datas ficam empilhadas */
 .date-start,
 .date-end {
   display: block;
@@ -226,7 +227,7 @@ body {
 
 .date-line {
   display: block;
-  width: 1px;
+  width: 2px;
   height: 16px;
   background-color: #555;
   margin: 2px auto;
