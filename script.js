@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Como a página agora é contínua, não há função de paginação.
+  // Como a página agora é contínua, removemos a função de paginação.
   // Todo o conteúdo permanece conforme definido no index.html.
 });
 
