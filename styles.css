@@ -123,10 +123,7 @@ body {
   line-height: 1.6;
   margin-bottom: 10px;
 }
-.content ul {
-  list-style-type: disc;
-  padding-left: 20px;
-}
+
 .content a {
   color: #00ff99;
   text-decoration: none;
