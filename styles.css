@@ -4,18 +4,24 @@
   padding: 0;
   box-sizing: border-box;
 }
-html, body {
+
+html,
+body {
   width: 100%;
   height: 100%;
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
+  overflow-x: auto;
+  /* Enable horizontal scrolling */
 }
+
 /* Fundo com animação */
 body {
   background: #DCDCDC;
   position: relative;
-  overflow: auto;
+  overflow-x: auto;
 }
+
 #backgroundCanvas {
   position: fixed;
   top: 0;
@@ -24,6 +30,7 @@ body {
   height: 100%;
   z-index: 0;
 }
+
 /* Centraliza a única página contínua */
 #pageWrapper {
   position: relative;
@@ -34,18 +41,22 @@ body {
   align-items: center;
   padding: 20px;
   gap: 20px;
+  min-width: 250mm;
+  /* Ensure wrapper is at least as wide as the page */
 }
-/* Página com altura automática (cresce conforme o conteúdo) */
+
+/* Página com altura automática (estilo PDF) */
 .page {
-  width: 210mm;
+  width: 250mm;
   height: auto;
   background: #FFFFFF;
   color: #000;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: row;
-  overflow: visible;
+  /* Removed duplicate overflow properties to allow the outer container to manage scrolling */
 }
+
 /* Sidebar */
 .sidebar {
   width: 35%;
@@ -53,6 +64,7 @@ body {
   padding: 20px;
   color: #000;
 }
+
 .sidebar .profile-pic {
   width: 100%;
   max-width: 120px;
@@ -60,14 +72,18 @@ body {
   display: block;
   margin: 0 auto 10px;
 }
+
 .sidebar h1 {
   text-align: center;
   font-size: 1.1em;
   margin-bottom: 15px;
 }
-.sidebar .contato, .sidebar .habilidades {
+
+.sidebar .contato,
+.sidebar .habilidades {
   margin-bottom: 20px;
 }
+
 .sidebar h2 {
   font-size: 0.9em;
   margin-bottom: 10px;
@@ -75,16 +91,20 @@ body {
   padding-bottom: 5px;
   text-align: center;
 }
+
 .sidebar p {
   font-size: 0.6em;
 }
+
 /* Progress bars */
 .skill {
   margin-bottom: 10px;
 }
+
 .skill span {
   font-size: 1em;
 }
+
 .progress {
   width: 100%;
   background: #444;
@@ -92,33 +112,42 @@ body {
   overflow: hidden;
   margin-top: 5px;
 }
+
 .progress-bar {
   height: 8px;
   background: #00ff99;
 }
+
 /* Conteúdo principal */
 .content {
   width: 60%;
   padding: 20px;
   height: auto;
 }
+
 .content section {
   margin-bottom: 20px;
 }
+
 .content h2 {
   font-size: 1.1em;
   border-bottom: 2px solid #00ff99;
   padding-bottom: 5px;
   margin-bottom: 10px;
 }
+
 .content h3 {
-  font-size: 0.8em;
-  border-bottom: 2px solid #00ff99;
+  font-size: 1em;
+  border-bottom: 2px solid rgb(173, 169, 169);
   padding-bottom: 5px;
   margin-bottom: 10px;
 }
 
-.content p, .content ul {
+.content p{
+  font-size: 14px;
+  text-align: justify
+}
+.content ul {
   font-size: 0.9em;
   line-height: 1.6;
   margin-bottom: 10px;
@@ -128,22 +157,27 @@ body {
   color: #00ff99;
   text-decoration: none;
 }
+
 .content a:hover {
   text-decoration: underline;
 }
+
 /* Ícones e links */
 .icon-container {
   display: inline-flex;
   align-items: center;
   margin-right: 15px;
 }
+
 .icon-container a {
   text-decoration: none;
   color: #007bff;
 }
+
 .icon-container a:hover {
   text-decoration: underline;
 }
+
 .icon {
   width: 12px;
   height: 12px;
@@ -151,41 +185,66 @@ body {
   vertical-align: middle;
 }
 
-.bar {
-  list-style: none;
-}
-.bar >li {
-  position: relative;
-}
-.bar>li:before {
-  content: '\25CF';
-  margin-right: 10px;
-  font-size: 20px;
-}
-.bar>li:after {
-  position: absolute;
-  left: 0;
-  top: 0;
-  content: '';
-  border-left: 2px solid black;
-  margin-left: 5px;
-  height: 100%;
-}
-.bar >li:first-of-type:after {
-  top: 50%;
-}
-.bar >li:last-of-type:after {
-  top: -50%;
+ol {
+  margin: 2rem 0 0rem 3rem
 }
 
-/* Responsividade */
-@media (max-width: 800px) {
-  .page {
-    width: 90%;
-    height: auto;
-    flex-direction: column;
-  }
-  .sidebar, .content {
-    width: 100%;
-  }
+li {
+  position: relative;
+  border-left: 0.1rem solid rgb(173, 169, 169);
+  padding:0rem 0rem 3rem 1.5rem; 
+  display: flex;
+  gap: 0.6rem;
+}
+
+/* Remove a borda no último li, se desejar */
+li:last-of-type {
+  border-left: transparent solid 0.1rem;
+}
+
+/* Dot centralizado na linha */
+li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;                 
+  width: 0.9rem;
+  height: 0.9rem;
+  background-color: rgb(90, 90, 90);
+  border-radius: 50%;
+  transform: translate(-50%, 0); 
+}
+
+/* Ajuste para o <time> ficar fora do li, à esquerda */
+li time {
+  font-size: 10px;
+  position: absolute;
+  left: -8rem; /* Ajuste este valor conforme necessário */
+  top: 100rem;      /* Alinhar verticalmente com o ponto ou texto */
+  width: 7rem; /* Largura para alinhar corretamente (opcional) */
+  text-align: right;
+  color: rgb(90, 90, 90);
+}
+
+li > div {
+  position: relative;
+  top: -5px; /* Ajuste este valor para mover para cima (valor negativo) ou para baixo (valor positivo) */
+}
+
+/* Position the vertical date container close to the dot */
+.vertical-date {
+  position: absolute;
+  left: -5.5rem; /* Adjust this value to bring it closer or further from the dot */
+  top: 26%;    /* Align vertically with the dot */
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vertical-line {
+  width: 1px;
+  height: 0.5rem;  /* Adjust the height as needed */
+  background: rgb(90, 90, 90);
+  margin: 0.5rem 0;
 }
