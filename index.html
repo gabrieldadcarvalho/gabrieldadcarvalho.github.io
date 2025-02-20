@@ -1,195 +1,411 @@
 <!DOCTYPE html>
 <html lang="pt">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Currículo - Gabriel D'assumpção de Carvalho</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Currículo - Gabriel D'assumpção de Carvalho</title>
+        <link rel="stylesheet" href="styles.css">
+        <style>
         @media print {
             .page {
                 page-break-before: always;
             }
         }
     </style>
-</head>
+    </head>
 
-<body>
-    <canvas id="backgroundCanvas"></canvas>
-    <div id="pageWrapper">
-        <div class="page">
-            <aside class="sidebar">
-                <img src="imagens/foto.png" alt="Gabriel D'assumpção de Carvalho" class="profile-pic">
-                <h1>Gabriel D'assumpção de Carvalho</h1>
-                <div class="contato">
-                    <h2>Contato</h2>
-                    <div class="icon-container">
-                        <a href="mailto:gabriel.dassumpcao@ufpe.br" target="_blank">
-                            <img src="imagens/gmail.png" alt="gmail" class="icon"><span>gabriel.dassumpcao@ufpe.br</span>
-                        </a>
-                    </div>
-                    <div class="icon-container">
-                        <a href="https://www.linkedin.com/in/gabriel-carvalho-ab38b7209/" target="_blank">
-                            <img src="imagens/linkedin.png" alt="linkedin" class="icon"><span>Gabriel Carvalho</span>
-                        </a>
-                    </div>
-                    <div class="icon-container">
-                        <a href="https://github.com/gabrieldadcarvalho" target="_blank">
-                            <img src="imagens/github2.png" alt="github" class="icon"><span>gabrieldadcarvalho</span>
-                        </a>
-                    </div>
-                    <div class="habilidades">
-                        <h2>Habilidades</h2>
-                        <div class="skill">
-                            <span>Python</span>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 90%;"></div>
+    <body>
+        <canvas id="backgroundCanvas"></canvas>
+        <div id="pageWrapper">
+            <div class="page">
+                <aside class="sidebar">
+                    <img src="imagens/foto.png"
+                        alt="Gabriel D'assumpção de Carvalho"
+                        class="profile-pic">
+                    <h1>Gabriel D'assumpção de Carvalho</h1>
+                    <div class="contato">
+                        <h2>Contatos</h2>
+                        <div class="icon-container">
+                            <a href="mailto:gabriel.dassumpcao@ufpe.br"
+                                target="_blank">
+                                <img src="imagens/gmail.png" alt="gmail"
+                                    class="icon"><span>gabriel.dassumpcao@ufpe.br</span>
+                            </a>
+                        </div>
+                        <div class="icon-container">
+                            <a
+                                href="https://www.linkedin.com/in/gabriel-carvalho-ab38b7209/"
+                                target="_blank">
+                                <img src="imagens/linkedin.png" alt="linkedin"
+                                    class="icon"><span>Gabriel Carvalho</span>
+                            </a>
+                        </div>
+                        <div class="icon-container">
+                            <a href="https://github.com/gabrieldadcarvalho"
+                                target="_blank">
+                                <img src="imagens/github2.png" alt="github"
+                                    class="icon"><span>gabrieldadcarvalho</span>
+                            </a>
+                        </div>
+                        <div class="habilidades">
+                            <h2>Habilidades</h2>
+                            <h3>High-Skill</h3>
+                            <div class="skill">
+                                <span>Inteligência Artificial</span>
+                                <div class="progress">
+                                    <div class="progress-bar"
+                                        style="width: 80%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span>Linux</span>
+                                <div class="progress">
+                                    <div class="progress-bar"
+                                        style="width: 50%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span>R, Python</span>
+                                <div class="progress">
+                                    <div class="progress-bar"
+                                        style="width: 80%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span>HTML, CSS, JavaScript</span>
+                                <div class="progress">
+                                    <div class="progress-bar"
+                                        style="width: 50%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span>Markdown</span>
+                                <div class="progress">
+                                    <div class="progress-bar"
+                                        style="width: 100%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span>SQL, MongoDB, PostgreSQL</span>
+                                <div class="progress">
+                                    <div class="progress-bar"
+                                        style="width: 50%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span>Excel</span>
+                                <div class="progress">
+                                    <div class="progress-bar"
+                                        style="width: 100%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span>PowerBI</span>
+                                <div class="progress">
+                                    <div class="progress-bar"
+                                        style="width: 80%;"></div>
+                                </div>
+                            </div>
+                            <h3>Soft-Skill</h3>
+                            <div class="skill">
+                                <span>Proatividade</span>
+                                <div class="progress">
+                                    <div class="progress-bar"
+                                        style="width: 100%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span>Criatividade</span>
+                                <div class="progress">
+                                    <div class="progress-bar"
+                                        style="width: 100%;"></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="skill">
-                            <span>Machine Learning</span>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 80%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <span>R</span>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 85%;"></div>
-                            </div>
-                        </div>
+                    </div>
+                </aside>
+                <main class="content" id="content">
+                    <section class="sobre-mim">
+                        <h2>Sobre Mim</h2>
+                        <p>Como estudante de Ciências Atuariais na UFPE, nutro
+                            um profundo interesse nesta área que engloba
+                            probabilidade, estatística, demografia e matemática
+                            financeira. Busco constantemente aprimorar meu
+                            conhecimento e habilidades tanto no âmbito acadêmico
+                            quanto no prático, com o objetivo de evoluir
+                            pessoalmente e profissionalmente nas áreas da
+                            ciência atuarial e empresarial. Além disso, venho me
+                            familiarizando com ferramentas essenciais para
+                            análise de dados, como Office, Python, R,
+                            Inteligência Artificial e Notion.</p>
+                    </section>
+                    <section class="historico-academico">
+                        <h2 class="titel">Formação Acadêmico</h2>
+                        <ol>
+                            <li>
+                                <time class="vertical-date"
+                                    datetime="2021 - 2026">
+                                    <span>2021</span>
+                                    <span class="vertical-line"></span>
+                                    <span>2026.2</span></time>
+                                <div>
+                                    <h3>Ciências Atuariais - UFPE <small>|
+                                            Graduação</small></h3>
+                                    <p>...</p>
+                                </div>
+                            </li>
+                        </section>
+                        <section class="experiencia">
+                            <h2 class="titel">Experiencia</h2>
+                            <ol>
+                                <li>
+                                    <time class="vertical-date"
+                                        datetime="2021 - Presente">
+                                        <span>2021</span>
+                                        <span class="vertical-line"></span>
+                                        <span>Presente</span></time>
+                                    <div>
+                                        <h3>Kohu Culture <small>|
+                                                Co-fundador</small></h3>
+                                        <p>
+                                            Como fundador da emprsa de
+                                            roupa, fiquei responsável por
+                                            participar de processos criativos
+                                            para produção de roubas e conteúdos
+                                            online,
+                                            desenvolver app web para e-commerce,
+                                            gerenciamento do trafego pago,
+                                            controle de estoque e contábil da
+                                            empresa.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <time class="vertical-date"
+                                        datetime="2017 - 2020">
+                                        <span>2024</span>
+                                        <span class="vertical-line"></span>
+                                        <span>2023</span></time>
+                                    <div>
+                                        <h3>Liga de Mercado Financeiro <small>|
+                                                Analista
+                                                Macroeconômico</small></h3>
+                                        <p>Responsável por criador de notícias
+                                            semanais sobre
+                                            dados Macroeconômico e aulas sobre o
+                                            mercado, analisar empresas lista na
+                                            B3 para implementar da carteira de
+                                            investimento.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <time class="vertical-date"
+                                        datetime="2022 - 2022">
+                                        <span>2022</span>
+                                        <span class="vertical-line"></span>
+                                        <span>2022</span></time>
+                                    <div>
+                                        <h3>Fundamentos de Cálculo 2 - UFPE
+                                            <small>| Monitor
+                                            </small>
+                                        </h3>
+                                        <p>Como monitor fiquei responsável por
+                                            tirar dúvidas sobre os assuntos de
+                                            cálculo 2 e criação de listas de
+                                            exercicios.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <time class="vertical-date"
+                                        datetime="2022 - 2023">
+                                        <span>2022</span>
+                                        <span class="vertical-line"></span>
+                                        <span>2023</span></time>
+                                    <div>
+                                        <h3>Diretório Acadêmico de Ciências
+                                            Atuarias - UFPE
+                                            <small>| Presidente
+                                            </small>
+                                        </h3>
+                                        <p>Na presidencia do DA fiquei
+                                            responsável por gerir pessos,
+                                            elaborar documentações e reuniões,
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <time class="vertical-date"
+                                        datetime="2023 - 2023">
+                                        <span>2023</span>
+                                        <span class="vertical-line"></span>
+                                        <span>2023</span></time>
+                                    <div>
+                                        <h3>Excelsior Seguro
+                                            <small>| Estagiário Administrativo
+                                            </small>
+                                        </h3>
+                                        <p>Como estagiário do setor de
+                                            intermediação fiquei responsável por
+                                            automatizar a geração de
+                                            compravantes de pagamentos,
+                                            tratamento de dados e criação de
+                                            deashboards financeiros.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <time class="vertical-date"
+                                        datetime="2023 - 2025">
+                                        <span>2023</span>
+                                        <span class="vertical-line"></span>
+                                        <span>2025</span></time>
+                                    <div>
+                                        <h3>Liga Quantitativa - UFRN
+                                            <small>| Analista Quntitativo
+                                            </small>
+                                        </h3>
+                                        <p>Como analista quantitativo participei
+                                            de competições voltada ao mercado
+                                            financeiro, criando modelos
+                                            quantitativos para alocação de
+                                            recurso e desenvolvi aplicativo web
+                                            com Streamlit com aplicação de
+                                            modelos quantitativos.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <time class="vertical-date"
+                                        datetime="2023 - 2025">
+                                        <span>2023</span>
+                                        <span class="vertical-line"></span>
+                                        <span>2025</span></time>
+                                    <div>
+                                        <h3>Reciprev - Saúde Recife
+                                            <small>| Estagiário de Investimentos
+                                            </small>
+                                        </h3>
+                                        <p>Como estágio do setor de
+                                            investimentos estou responsável pela
+                                            criação do aplicativo web para
+                                            gerenciamento de investimento em
+                                            JavaScript e o aplicativo web para
+                                            analises estátisticas pela
+                                            biblioteca shiny do R, com a
+                                            implementação de container com
+                                            Docker para universialização do app
+                                            e utilização de MongoDB e
+                                            PostgreSQL</p>
+                                    </div>
+                                </li>
+                            </ol>
+                        </section>
+                        <section class="cursos">
+                            <h2 class="titel">Cursos</h2>
+                            <table class="ervaring">
+                                <ol class="ervaring">
+                                    <li>
+                                        <time class="vertical-date"
+                                            datetime="2020 - 2023">
+                                            <span>2023</span>
+                                            <span class="vertical-line"></span>
+                                            <span>2020</span>
+                                        </time>
+                                        <div>
+                                            <h3>Mercado financeiro de A a Z
+                                                <small>|
+                                                    ANBIMA</small></h3>
+                                            <p></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <time class="vertical-date"
+                                            datetime="2017 - 2023">
+                                            <span>2023</span>
+                                            <span class="vertical-line"></span>
+                                            <span>2017</span>
+                                        </time>
+                                        <div>
+                                            <h3>Gestão de Risco e Performance
+                                                <small>|
+                                                    ANBIMA</small></h3>
+                                            <p></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <time class="vertical-date"
+                                            datetime="2017 - 2020">
+                                            <span>2020</span>
+                                            <span class="vertical-line"></span>
+                                            <span>2017</span>
+                                        </time>
+                                        <div>
+                                            <h3>Python 3 [Mundo 1 e 2] <small>|
+                                                    Curso em Vídeo</small></h3>
+                                            <p></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <time class="vertical-date"
+                                            datetime="2015 - 2017">
+                                            <span>2017</span>
+                                            <span class="vertical-line"></span>
+                                            <span>2015</span>
+                                        </time>
+                                        <div>
+                                            <h3>Quantitative Research <small>|
+                                                    JP Morgan Chase &
+                                                    Co</small></h3>
+                                            <p></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <time class="vertical-date"
+                                            datetime="2014 - 2015">
+                                            <span>2015</span>
+                                            <span class="vertical-line"></span>
+                                            <span>2014</span>
+                                        </time>
+                                        <div>
+                                            <h3>Introdução às Competências
+                                                Essenciais para a Carreira de
+                                                Análise de Dados <small>|
+                                                    Linkedin</small></h3>
+                                            <p></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <time class="vertical-date"
+                                            datetime="2012 - 2014">
+                                            <span>2014</span>
+                                            <span class="vertical-line"></span>
+                                            <span>2012</span>
+                                        </time>
+                                        <div>
+                                            <h3>Neural Networks e Deep Learning
+                                                <small>|
+                                                    Escola de IA</small></h3>
+                                            <p></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <time class="vertical-date"
+                                            datetime="2017 - 2023">
+                                            <span>2023</span>
+                                            <span class="vertical-line"></span>
+                                            <span>2017</span>
+                                        </time>
+                                        <div>
+                                            <h3>Git e GitHub <small>|
+                                                    Curso em Vídeo</small></h3>
+                                            <p></p>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </section>
+                        </main>
                     </div>
                 </div>
-            </aside>
-            <main class="content" id="content">
-                <section class="sobre-mim">
-                    <h2>Sobre Mim</h2>
-                    <p>Como estudante de Ciências Atuariais na UFPE, nutro um profundo interesse nesta área que engloba probabilidade, estatística, demografia e matemática financeira. Busco constantemente aprimorar meu conhecimento e habilidades tanto no âmbito acadêmico quanto no prático, com o objetivo de evoluir pessoalmente e profissionalmente nas áreas da ciência atuarial e empresarial. Além disso, venho me familiarizando com ferramentas essenciais para análise de dados, como Office, Python, R, Inteligência Artificial e Notion.</p>
-                </section>
-                <section class="cursos">
-                    <h2 class="titel">Cursos</h2>
-                    <table class="ervaring">
-                        <ol class="ervaring">
-                            <li>
-                                <time class="vertical-date" datetime="2020 - 2023">
-                                    <span>2023</span>
-                                    <span class="vertical-line"></span>
-                                    <span>2020</span>
-                                </time>
-                                <div>
-                                    <h3>Mercado financeiro de A a Z ANBIMA</h3>
-                                    <p></p>
-                                </div>
-                            </li>
-                            <li>
-                                <time class="vertical-date" datetime="2017 - 2023">
-                                    <span>2023</span>
-                                    <span class="vertical-line"></span>
-                                    <span>2017</span>
-                                </time>
-                                <div>
-                                    <h3>Gestão de Risco e Performance ANBIMA</h3>
-                                    <p></p>
-                                </div>
-                            </li>
-                            <li>
-                                <time class="vertical-date" datetime="2017 - 2020">
-                                    <span>2020</span>
-                                    <span class="vertical-line"></span>
-                                    <span>2017</span>
-                                </time>
-                                <div>
-                                    <h3>Python 3 [Mundo 1 e 2] Curso em Video</h3>
-                                    <p></p>
-                                </div>
-                            </li>
-                            <li>
-                                <time class="vertical-date" datetime="2015 - 2017">
-                                    <span>2017</span>
-                                    <span class="vertical-line"></span>
-                                    <span>2015</span>
-                                </time>
-                                <div>
-                                    <h3>Quantitative Research JP Morgan Chase & Co</h3>
-                                    <p></p>
-                                </div>
-                            </li>
-                            <li>
-                                <time class="vertical-date" datetime="2014 - 2015">
-                                    <span>2015</span>
-                                    <span class="vertical-line"></span>
-                                    <span>2014</span>
-                                </time>
-                                <div>
-                                    <h3>Introdução às Competências Essenciais para a Carreira de Análise de Dados Linkedin</h3>
-                                    <p></p>
-                                </div>
-                            </li>
-                            <li>
-                                <time class="vertical-date" datetime="2012 - 2014">
-                                    <span>2014</span>
-                                    <span class="vertical-line"></span>
-                                    <span>2012</span>
-                                </time>
-                                <div>
-                                    <h3>Neural Networks e Deep Learning Escola de IA</h3>
-                                    <p></p>
-                                </div>
-                            </li>
-                            <li>
-                                <time class="vertical-date" datetime="2017 - 2023">
-                                    <span>2023</span>
-                                    <span class="vertical-line"></span>
-                                    <span>2017</span>
-                                </time>
-                                <div>
-                                    <h3>Git e GitHub - Curso em Vídeo</h3>
-                                    <p></p>
-                                </div>
-                            </li>
-                        </ol>
-                </section>
-                <section class="experiencia">
-                    <h2 class="titel">Experiencia</h2>
-                    <ol>
-                        <li>
-                            <time class="vertical-date" datetime="2017 - 2020"> <span>2024</span>
-                                <span class="vertical-line"></span>
-                                <span>2023</span></time>
-                            <div>
-                                <h3>Kohu Culture <small>| Co-fundador</small></h3>
-                                <p>...</p>
-                            </div>
-                        </li>
-                        <li>
-                            <time class="vertical-date" datetime="2017 - 2020"> <span>2024</span>
-                                <span class="vertical-line"></span>
-                                <span>2023</span></time>
-                            <div>
-                                <h3>Liga de Mercado Financeiro <small>| Analista Macroeconômico</small></h3>
-                                <p>...</p>
-                            </div>
-                        </li>
-                    </ol>
-                </section>
-                <section class="historico-academico">
-                    <h2>Histórico Acadêmico</h2>
-                    <ul>
-                        <li>
-                            <h3>Ensino Médio</h3>
-                            <p>Colégio Motivo - Caruaru</p>
-                        </li>
-                        <li>
-                            <h3>Universidade Federal de Pernambuco - UFPE</h3>
-                            <p>Ciências Atuariais (7º Período)</p>
-                        </li>
-                    </ul>
-                </section>
-            </main>
-        </div>
-    </div>
-    <script src="script.js"></script>
-</body>
+                <script src="script.js"></script>
+            </body>
 
-</html>
+        </html>
