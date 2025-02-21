@@ -136,20 +136,28 @@ body {
 
 .content h2 {
   font-size: 1.1em;
-  border-bottom: 2px solid #00ff99;
+  color: #444;
+  border-bottom: 1px solid #00ff99;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.content h1{
+  font-size: 2.3em;
+  border-bottom: 1px solid #00ff99;
   padding-bottom: 5px;
   margin-bottom: 10px;
 }
 
 .content h3 {
   font-size: 1em;
-  border-bottom: 2px solid rgb(173, 169, 169);
+  border-bottom: 1px solid rgb(173, 169, 169);
   padding-bottom: 5px;
   margin-bottom: 10px;
 }
 
 .content p{
-  font-size: 14px;
+  font-size: 12px;
   text-align: justify
 }
 .content ul {
@@ -167,6 +175,21 @@ body {
   text-decoration: underline;
 }
 
+h2 .icon{
+  width:20px;
+  height: 20px;
+  filter: brightness(0) invert(0.4);
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+h2 .icon[src*="briefcase"] {
+  width: 15px; /* Ajuste conforme necessário */
+  height: 15px;
+  margin-right: 15px;
+  vertical-align: middle;
+}
+
 /* Ícones e links */
 .icon-container {
   display: inline-flex;
@@ -182,6 +205,7 @@ body {
 .icon-container a:hover {
   text-decoration: underline;
 }
+
 
 .icon {
   width: 12px;
