@@ -149,6 +149,16 @@ body {
   margin-bottom: 10px;
 }
 
+.link-portfolio {
+    color: #007BFF; /* Cor do link */
+    font-weight: bold; /* Deixa o texto em negrito */
+}
+
+.link-portfolio:hover {
+    color: #0056b3; /* Cor do link quando o mouse passa sobre */
+    text-decoration: underline; /* Sublinha o texto ao passar o mouse */
+}
+
 .content h3 {
   font-size: 1em;
   border-bottom: 1px solid rgb(173, 169, 169);
