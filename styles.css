@@ -48,7 +48,7 @@ body {
 
 /* Página com altura automática (estilo PDF) */
 .page {
-  width: 250mm;
+  width: 300mm;
   height: auto;
   background: #FFFFFF;
   color: #000;
