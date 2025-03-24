@@ -302,3 +302,71 @@ li > div {
   background: rgb(90, 90, 90);
   margin: 0.5rem 0;
 }
+
+@media (max-width: 768px) {
+  /* Ajusta a largura do container principal */
+  #pageWrapper {
+    min-width: 100%;
+    padding: 10px;
+  }
+
+  /* Faz os elementos ficarem em coluna ao invés de lado a lado */
+  .page {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+
+  /* Ajusta a sidebar para ocupar a largura total */
+  .sidebar {
+    width: 90%;
+    text-align: center;
+    padding: 15px;
+  }
+
+  /* Ajusta a imagem de perfil */
+  .sidebar .profile-pic {
+    max-width: 80px;
+  }
+
+  /* Ajusta a largura do conteúdo */
+  .content {
+    width: 90%;
+    padding: 10px;
+  }
+
+  /* Reduz o tamanho das fontes para melhor leitura */
+  .content h1 {
+    font-size: 1.8em;
+  }
+
+  .content h2 {
+    font-size: 1em;
+  }
+
+  .content p {
+    font-size: 11px;
+  }
+
+  /* Ajusta os ícones */
+  .icon {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* Melhora a visualização da linha do tempo */
+  ol {
+    margin: 1rem 0 0rem 1rem;
+  }
+
+  li time {
+    left: -5rem;
+    font-size: 9px;
+  }
+
+  li::before {
+    width: 0.7rem;
+    height: 0.7rem;
+  }
+}
+
