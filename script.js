@@ -1,21 +1,25 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const downloadBtn = document.getElementById("downloadPDF");
+    document.getElementById("downloadPDF").addEventListener("click", function () {
+        const element = document.getElementById("curriculo");
 
-    if (downloadBtn) {
-        downloadBtn.addEventListener("click", function () {
-            const element = document.getElementById("content"); // Área a ser convertida
-            const opt = {
-                margin: 10,
-                filename: 'curriculo_gabriel.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            };
+        const opt = {
+            margin: 10,
+            filename: 'curriculo_gabriel_dassumpcao_carvalho.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { 
+                scale: 2, 
+                useCORS: true // Para carregar imagens externas corretamente
+            },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
 
+        // Usa um timeout para evitar problemas de carregamento de estilos
+        setTimeout(() => {
             html2pdf().set(opt).from(element).save();
-        });
-    }
+        }, 500);
+    });
 });
+
 
 
 
