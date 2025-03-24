@@ -1,21 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const btnDownload = document.getElementById("downloadPDF");
+    const downloadBtn = document.getElementById("downloadPDF");
 
-    btnDownload.addEventListener("click", function () {
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF();
+    if (downloadBtn) {
+        downloadBtn.addEventListener("click", function () {
+            const element = document.getElementById("content"); // Área a ser convertida
+            const opt = {
+                margin: 10,
+                filename: 'curriculo_gabriel.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
 
-        // Captura o conteúdo principal
-        const content = document.getElementById("content");
-
-        doc.html(content, {
-            callback: function (doc) {
-                doc.save("Curriculo_Gabriel_Carvalho.pdf");
-            },
-            x: 10,
-            y: 10
+            html2pdf().set(opt).from(element).save();
         });
-    });
+    }
 });
 
 
