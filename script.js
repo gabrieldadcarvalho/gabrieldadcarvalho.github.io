@@ -1,4 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const btnDownload = document.getElementById("downloadPDF");
+
+    btnDownload.addEventListener("click", function () {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // Captura o conteúdo principal
+        const content = document.getElementById("content");
+
+        doc.html(content, {
+            callback: function (doc) {
+                doc.save("Curriculo_Gabriel_Carvalho.pdf");
+            },
+            x: 10,
+            y: 10
+        });
+    });
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
   // Como a página agora é contínua, removemos a função de paginação.
   // Todo o conteúdo permanece conforme definido no index.html.
 });
