@@ -1,106 +1,60 @@
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("downloadPDF").addEventListener("click", function () {
-        const element = document.getElementById("curriculo");
+// Combined data for the single pricing table
+// You can curate this list as needed
+const combinedPricingData = [
+  {
+    service: "Análise Exploratória de Dados",
+    description: "Análise abrangente para identificar padrões, tendências e insights relevantes nos seus dados.",
+    price: "R$ 1.500 / projeto"
+  },
+  {
+    service: "Limpeza e Pré-processamento de Dados",
+    description: "Transformação e padronização dos dados brutos para garantir qualidade e consistência na análise.",
+    price: "R$ 500 / dataset"
+  },
+  {
+    service: "Criação de Gráficos e Tabelas",
+    description: "Visualização dos dados por meio de gráficos e tabelas que facilitam a interpretação das informações.",
+    price: "R$ 700 / dataset"
+  },
+  {
+    service: "Limpeza + Pré-processamento + Gráficos e Tabelas",
+    description: "Pacote que combina a preparação dos dados com a criação de visualizações para insights rápidos.",
+    price: "R$ 1.050 / dataset"
+  },
+  {
+    service: "Pacote Completo: Limpeza, Gráficos e Análise Exploratória",
+    description: "Serviço integrado que engloba a limpeza, visualização e análise aprofundada dos dados.",
+    price: "R$ 2.150 / dataset"
+  },
+  {
+    service: "Desenvolvimento de Dashboard",
+    description: "Criação de painéis interativos para monitoramento em tempo real utilizando Power BI, R Shiny ou Streamlit.",
+    price: "R$ 2.200 / dashboard"
+  },
+  {
+    service: "Modelo Preditivo",
+    description: "Desenvolvimento de modelos estatísticos para prever tendências e comportamentos futuros com precisão.",
+    price: "R$ 3.000 / modelo"
+  },
+  {
+    service: "Implementação de IA",
+    description: "Soluções personalizadas de Inteligência Artificial (LLM, visão computacional, RNN) adaptadas às suas necessidades.",
+    price: "A partir de R$ 3.500"
+  },
+  {
+    service: "Web Scrapping",
+    description: "Extração automatizada de dados de sites para alimentar suas análises e relatórios.",
+    price: "A partir de R$ 1.500"
+  },
+];
 
-        const opt = {
-            margin: 10,
-            filename: 'curriculo_gabriel_dassumpcao_carvalho.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { 
-                scale: 2, 
-                useCORS: true // Para carregar imagens externas corretamente
-            },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-        };
+// DOM elements - Only need the table now
+const pricingTable = document.getElementById('pricing-table');
 
-        // Usa um timeout para evitar problemas de carregamento de estilos
-        setTimeout(() => {
-            html2pdf().set(opt).from(element).save();
-        }, 500);
-    });
+// Initialize the page
+document.addEventListener('DOMContentLoaded', () => {
+    // Directly load the single pricing table
+    updateSinglePricingTable();
+
+    // No other event listeners needed for tabs or modal
 });
-
-
-
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     // Como a página agora é contínua, removemos a função de paginação.
-//     // Todo o conteúdo permanece conforme definido no index.html.
-// });
-
-// // Código de animação de partículas
-// const canvas = document.getElementById("backgroundCanvas");
-// const ctx = canvas.getContext("2d");
-
-// function resizeCanvas() {
-//     canvas.width = window.innerWidth;
-//     canvas.height = window.innerHeight;
-// }
-// resizeCanvas();
-// window.addEventListener("resize", resizeCanvas);
-
-// const colors = ["#00ff99", "#8e44ad"];
-// const numParticles = 80;
-// const maxDistance = 150;
-// let particles = [];
-
-// class Particle {
-//     constructor() {
-//         this.x = Math.random() * canvas.width;
-//         this.y = Math.random() * canvas.height;
-//         this.size = Math.random() * 3 + 2;
-//         this.speedX = (Math.random() - 0.5) * 2;
-//         this.speedY = (Math.random() - 0.5) * 2;
-//         this.color = colors[Math.floor(Math.random() * colors.length)];
-//     }
-//     update() {
-//         this.x += this.speedX;
-//         this.y += this.speedY;
-//         if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-//         if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-//     }
-//     draw() {
-//         ctx.fillStyle = this.color;
-//         ctx.beginPath();
-//         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-//         ctx.fill();
-//     }
-// }
-
-// function initParticles() {
-//     particles = [];
-//     for (let i = 0; i < numParticles; i++) {
-//         particles.push(new Particle());
-//     }
-// }
-// initParticles();
-
-// function drawConnections() {
-//     for (let i = 0; i < particles.length; i++) {
-//         for (let j = i + 1; j < particles.length; j++) {
-//             const dx = particles[i].x - particles[j].x;
-//             const dy = particles[i].y - particles[j].y;
-//             const distance = Math.sqrt(dx * dx + dy * dy);
-//             if (distance < maxDistance) {
-//                 ctx.strokeStyle = "rgb(0, 0, 0)";
-//                 ctx.lineWidth = 1;
-//                 ctx.beginPath();
-//                 ctx.moveTo(particles[i].x, particles[i].y);
-//                 ctx.lineTo(particles[j].x, particles[j].y);
-//                 ctx.stroke();
-//             }
-//         }
-//     }
-// }
-
-// function animate() {
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-//     particles.forEach(p => {
-//         p.update();
-//         p.draw();
-//     });
-//     drawConnections();
-//     requestAnimationFrame(animate);
-// }
-
-// animate();

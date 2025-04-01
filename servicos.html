@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços - Gabriel D'assumpção de Carvalho</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <canvas id="backgroundCanvas"></canvas> <!-- Optional background -->
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">GDC</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Sobre</a></li>
+                    <li><a href="portfolio.html">Portfólio</a></li>
+                    <li><a href="servicos.html" class="active">Serviços</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="pageWrapper">
+        <main class="main-content">
+            <div class="container">
+                <section class="pricing-section">
+                    <h1>GDC Serviços</h1>
+                    <p class="section-subtitle">Explore a gama de serviços de análise de dados e IA ofertadas.</p>
+
+                    <div class="pricing-container single-table-container table-style-minimal"> <!-- Added class -->
+                        <div class="pricing-tables">
+                            <table id="pricing-table">
+                                <thead>
+                                    <tr>
+                                        <th>Serviço</th>
+                                        <th>Descrição</th>
+                                        <th>Preço Base</th>
+                                    </tr>
+                                </thead>
+                                <!-- START: Populate tbody directly -->
+                                <tbody>
+                                    <tr>
+                                        <td data-label="Serviço">Análise Exploratória de Dados</td>
+                                        <td data-label="Descrição">Análise abrangente para identificar padrões, tendências e insights relevantes nos seus dados.</td>
+                                        <td data-label="Preço Base / Modelo">R$ 1.500 / projeto</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Serviço">Limpeza e Pré-processamento de Dados</td>
+                                        <td data-label="Descrição">Transformação e padronização dos dados brutos para garantir qualidade e consistência na análise.</td>
+                                        <td data-label="Preço Base / Modelo">R$ 500 / dataset</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Serviço">Criação de Gráficos e Tabelas</td>
+                                        <td data-label="Descrição">Visualização dos dados por meio de gráficos e tabelas que facilitam a interpretação das informações.</td>
+                                        <td data-label="Preço Base / Modelo">R$ 700 / dataset</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Serviço">Limpeza + Pré-processamento + Gráficos e Tabelas</td>
+                                        <td data-label="Descrição">Pacote que combina a preparação dos dados com a criação de visualizações para insights rápidos.</td>
+                                        <td data-label="Preço Base / Modelo">R$ 1.050 / dataset</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Serviço">Pacote Completo: Limpeza, Gráficos e Análise Exploratória</td>
+                                        <td data-label="Descrição">Serviço integrado que engloba a limpeza, visualização e análise aprofundada dos dados.</td>
+                                        <td data-label="Preço Base / Modelo">R$ 2.150 / dataset</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Serviço">Desenvolvimento de Dashboard</td>
+                                        <td data-label="Descrição">Criação de painéis interativos para monitoramento em tempo real utilizando Power BI, R Shiny ou Streamlit.</td>
+                                        <td data-label="Preço Base / Modelo">R$ 2.200 / dashboard</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Serviço">Modelo Preditivo</td>
+                                        <td data-label="Descrição">Desenvolvimento de modelos estatísticos para prever tendências e comportamentos futuros com precisão.</td>
+                                        <td data-label="Preço Base / Modelo">R$ 3.000 / modelo</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Serviço">Implementação de IA</td>
+                                        <td data-label="Descrição">Soluções personalizadas de Inteligência Artificial (LLM, visão computacional, RNN) adaptadas às suas necessidades.</td>
+                                        <td data-label="Preço Base / Modelo">A partir de R$ 3.500</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Serviço">Web Scrapping</td>
+                                        <td data-label="Descrição">Extração automatizada de dados de sites para alimentar suas análises e relatórios.</td>
+                                        <td data-label="Preço Base / Modelo">A partir de R$ 1.500</td>
+                                    </tr>
+                                </tbody>
+                                <!-- END: Populated tbody -->
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="main-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p>© 2025 Gabriel D'assumpção de Carvalho. Todos os direitos reservados.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/gabriel-carvalho-ab38b7209/" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/gabrieldadcarvalho" target="_blank">GitHub</a>
+                        <a href="https://gabrieldadcarvalho.streamlit.app/" target="_blank">Portfólio</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- REMOVED: <script src="script.js"></script> -->
+     <!-- Optional: Add background canvas script if you use it -->
+    <!-- <script src="background.js"></script> -->
+</body>
+
+</html>
