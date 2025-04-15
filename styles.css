@@ -11,8 +11,8 @@
     --medium-light-color: #cbd5e1;   /* Medium gray text */
     --dark-border-color: rgba(255, 255, 255, 0.1); /* Subtle border */
 
-    --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    --font-heading: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Or a different one if desired */
+    --font-main: 'Segoe UI', Arial, sans-serif;
+    --font-heading: 'Segoe UI', Arial, sans-serif;
 
     --transition-fast: all 0.2s ease-in-out;
     --transition-medium: all 0.3s ease;
@@ -27,22 +27,18 @@
     box-sizing: border-box;
 }
 
-/* Make sure you have basic body/html setup */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    /* Optional: If you want the hero truly centered on the *initial* viewport */
-    /* height: 100%; */
+    min-height: 100vh;
 }
 
-/* Styles for the #pageWrapper if it exists */
 #pageWrapper {
-    /* Ensure it doesn't interfere with hero's width/height */
     width: 100%;
-    min-height: 100vh; /* Make wrapper at least viewport height */
-    display: flex; /* Optional: if you want to manage its children layout */
-    flex-direction: column; /* Optional: if using flex */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* --- Background Canvas --- */
@@ -52,22 +48,14 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Place behind everything */
-    /* Add any specific JS-driven canvas styles if needed */
-    background: linear-gradient(135deg, var(--dark-color) 0%, #0a0a14 100%); /* Static fallback */
-}
-
-#pageWrapper {
-    position: relative; /* Needed for z-index context if canvas overlaps */
-    z-index: 1;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    z-index: -1;
+    background: linear-gradient(135deg, var(--dark-color) 0%, #0a0a14 100%); /* Fallback */
+    display: block !important; /* Ensure visibility for html2canvas */
 }
 
 /* --- Utility Classes --- */
 .container {
-    max-width: 1300px; /* Slightly wider for CV layout */
+    max-width: 1300px;
     margin: 0 auto;
     padding: 0 2rem;
     width: 100%;
@@ -109,11 +97,11 @@ html, body {
 }
 
 .icon {
-    width: 18px; /* Default icon size */
+    width: 18px;
     height: 18px;
     vertical-align: middle;
     margin-right: 8px;
-    filter: invert(95%) sepia(5%) saturate(228%) hue-rotate(187deg) brightness(115%) contrast(87%); /* Make icons light */
+    filter: invert(95%) sepia(5%) saturate(228%) hue-rotate(187deg) brightness(115%) contrast(87%);
 }
 
 .tag {
@@ -130,10 +118,10 @@ html, body {
 
 /* --- Header --- */
 .main-header {
-    position: sticky; /* Make header sticky */
+    position: sticky;
     top: 0;
-    background-color: rgba(15, 23, 42, 0.85); /* Semi-transparent background */
-    backdrop-filter: blur(10px); /* Blur effect */
+    background-color: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(10px);
     z-index: 10;
     padding: 1rem 0;
     border-bottom: 1px solid var(--dark-border-color);
@@ -144,7 +132,7 @@ html, body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: auto; /* Override container min-height */
+    min-height: auto;
 }
 
 .logo {
@@ -200,102 +188,82 @@ html, body {
 
 /* --- Hero Section --- */
 .hero {
-    /* 1. Make .hero a Flex Container */
     display: flex;
-
-    /* 2. Vertically Center Content (the .container div) */
     align-items: center;
-
-    /* 3. Horizontally Center Content (the .container div) */
     justify-content: center;
-
-    /* 4. CRITICAL: Give .hero a height for vertical centering */
-    min-height: 80vh; /* Use viewport height (e.g., 80% of screen height) */
-    /* Or a fixed height: height: 600px; */
-    /* Or make it fill the viewport: height: 100vh; */
-
-    /* 5. Ensure text *inside* the centered block is also centered */
+    min-height: 80vh;
     text-align: center;
-
-    /* Ensure it takes available width */
     width: 100%;
-
-    /* Optional: Add padding if needed inside the hero */
-    padding: 2rem 0; /* Adjust as necessary */
-
-    /* Optional: Background color/image for the hero */
-    /* background-color: #somecolor; */
+    padding: 2rem 0;
 }
 
-/* --- Container inside Hero --- */
 .hero .container {
-    /* Ensure container takes the width needed but respects max-width */
     width: 100%;
-    max-width: 1200px; /* Your defined max-width */
-    padding: 0 1rem; /* Padding inside the container */
-    /* No margin: 0 auto needed here because flexbox on .hero handles centering */
+    max-width: 1200px;
+    padding: 0 1rem;
 }
 
-/* --- Hero Content Block --- */
 .hero-content {
-    /* This div holds your text and buttons */
-    /* max-width: 800px; /* Optional: Limit the width of the text block */
-    /* margin: 0 auto; /* Centers this block *within* .container if needed,
-                         but might be redundant with text-align on .hero */
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-/* Styles for elements inside .hero-content (you likely have these) */
 .hero h1 {
-    font-size: 2.5rem; /* Adjust as needed */
+    font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: var(--light-color); /* Use your variables */
+    color: var(--light-color);
 }
 
 .hero h2 {
-    font-size: 1.5rem; /* Adjust as needed */
+    font-size: 1.5rem;
     margin-bottom: 1.5rem;
-    color: var(--primary-color); /* Use your variables */
+    color: var(--primary-color);
 }
 
 .hero-text {
-    font-size: 1.1rem; /* Adjust as needed */
+    font-size: 1.1rem;
     margin-bottom: 2rem;
-    max-width: 600px; /* Limit paragraph width for readability */
-    margin-left: auto; /* Center the paragraph block itself if max-width is set */
+    max-width: 600px;
+    margin-left: auto;
     margin-right: auto;
-    color: var(--medium-light-color); /* Use your variables */
+    color: var(--medium-light-color);
 }
 
 .hero-buttons {
-    display: flex; /* Use flex to layout buttons */
-    justify-content: center; /* Center buttons horizontally */
-    gap: 1rem; /* Space between buttons */
-}   
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
 
 /* --- About / CV Section --- */
 .about-section {
-    background-color: var(--medium-dark-color); /* Slightly different background for contrast */
+    background-color: var(--medium-dark-color);
     padding: 4rem 0;
-    flex-grow: 1; /* Make main content fill space */
+    flex-grow: 1;
 }
 
 .cv-container {
     display: flex;
     gap: 3rem;
-    align-items: flex-start; /* Align items to the top */
-    min-height: auto; /* Override container min-height */
+    align-items: flex-start;
+    min-height: auto;
 }
 
 /* --- CV Sidebar --- */
 .cv-sidebar {
-    width: 35%; /* Adjust width as needed */
+    width: 35%;
     max-width: 380px;
-    position: sticky; /* Make sidebar sticky */
-    top: 100px; /* Adjust based on header height */
-    background-color: var(--dark-color); /* Sidebar background */
     padding: 2rem;
     border-radius: 12px;
     border: 1px solid var(--dark-border-color);
+    background-color: var(--dark-color);
+}
+
+@media screen and (min-width: 993px) {
+    .cv-sidebar {
+        position: sticky;
+        top: 100px;
+    }
 }
 
 .profile-section {
@@ -365,10 +333,11 @@ html, body {
     width: 20px;
     height: 20px;
     margin-right: 10px;
-    flex-shrink: 0; /* Prevent icon from shrinking */
+    flex-shrink: 0;
 }
+
 .contact-item span {
-    word-break: break-all; /* Break long emails/usernames */
+    word-break: break-all;
 }
 
 .skill-category {
@@ -405,7 +374,7 @@ html, body {
     background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
     height: 100%;
     border-radius: 10px;
-    transition: width 0.5s ease-in-out; /* Animate width change */
+    transition: width 0.5s ease-in-out;
 }
 
 .project-item {
@@ -430,13 +399,13 @@ html, body {
 
 /* --- CV Content --- */
 .cv-content {
-    width: 65%; /* Adjust width as needed */
-    flex-grow: 1; /* Take remaining space */
+    width: 65%;
+    flex-grow: 1;
 }
 
 .cv-content section {
     margin-bottom: 3rem;
-    background-color: var(--dark-color); /* Match sidebar section bg */
+    background-color: var(--dark-color);
     padding: 2rem;
     border-radius: 12px;
     border: 1px solid var(--dark-border-color);
@@ -457,7 +426,7 @@ html, body {
     width: 24px;
     height: 24px;
     margin-right: 12px;
-    filter: invert(58%) sepia(99%) saturate(2990%) hue-rotate(168deg) brightness(100%) contrast(103%); /* Color icon primary */
+    filter: invert(58%) sepia(99%) saturate(2990%) hue-rotate(168deg) brightness(100%) contrast(103%);
 }
 
 .bio {
@@ -469,86 +438,54 @@ html, body {
 /* Timeline Styles */
 .timeline {
     position: relative;
-    /* padding-left: 30px; Optional: if using a single vertical line */
 }
-
-/* Optional: Add a global timeline line */
-/* .timeline::before {
-    content: '';
-    position: absolute;
-    left: 10px;
-    top: 5px;
-    bottom: 5px;
-    width: 2px;
-    background-color: var(--dark-border-color);
-} */
 
 .timeline-item {
     display: flex;
-    gap: 1.5rem; /* Space between date and content */
+    gap: 1.5rem;
     margin-bottom: 2rem;
-    position: relative; /* For potential pseudo-elements */
+    position: relative;
 }
 
-/* Optional: Add circle markers */
-/* .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: 3px;
-    top: 5px;
-    width: 15px;
-    height: 15px;
-    background-color: var(--primary-color);
-    border-radius: 50%;
-    border: 3px solid var(--dark-color);
-    z-index: 1;
-} */
-
 .timeline-date {
-    flex-basis: 100px; /* Fixed width for dates */
+    flex-basis: 100px;
     flex-shrink: 0;
     text-align: right;
     color: var(--medium-light-color);
     font-size: 0.9rem;
-    padding-top: 0.2rem; /* Align with content */
-    position: relative; /* For the line */
+    padding-top: 0.2rem;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
 }
 
-.timeline-date span:first-child { /* Start Year/Date */
+.timeline-date span:first-child {
     font-weight: 600;
     color: var(--light-color);
 }
 
-.timeline-line { /* Small connector line (optional) */
-    display: none; /* Hide if not desired */
-    /* Example style if used between dates:
-    height: 10px;
-    width: 1px;
-    background-color: var(--medium-light-color);
-    margin: 4px 0;
-    */
+.timeline-line {
+    display: none;
 }
 
 .timeline-content {
     flex-grow: 1;
-    padding-bottom: 1rem; /* Space below content before next item */
-    border-bottom: 1px dashed var(--dark-border-color); /* Separator */
-}
-.timeline-item:last-child .timeline-content {
-    border-bottom: none; /* Remove border for the last item */
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed var(--dark-border-color);
 }
 
+.timeline-item:last-child .timeline-content {
+    border-bottom: none;
+}
 
 .timeline-content h3 {
     font-size: 1.2rem;
     color: var(--light-color);
     margin-bottom: 0.5rem;
     display: flex;
-    align-items: center; /* Align tag vertically */
-    flex-wrap: wrap; /* Allow tag to wrap on small screens */
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .timeline-content p {
@@ -557,44 +494,47 @@ html, body {
     margin-top: 0.5rem;
 }
 
-/* Specific timeline styles for Courses (simpler layout) */
+/* Courses Section */
 .courses .timeline-item {
     gap: 1rem;
     align-items: center;
 }
+
 .courses .timeline-date {
-   flex-basis: 50px;
-   text-align: center;
-   font-weight: 600;
-   color: var(--light-color);
+    flex-basis: 50px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--light-color);
 }
+
 .courses .timeline-content {
-    padding-bottom: 0.5rem; /* Less spacing */
-    border: none; /* Remove dashed border */
+    padding-bottom: 0.5rem;
+    border: none;
 }
+
 .courses .timeline-content h3 {
     font-size: 1rem;
     font-weight: 500;
     color: var(--medium-light-color);
     margin-bottom: 0;
 }
-.courses .timeline-content h3 .tag {
-     margin-left: auto; /* Push tag to the right */
-     background-color: var(--primary-color);
-     color: var(--dark-color);
-}
 
+.courses .timeline-content h3 .tag {
+    margin-left: auto;
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+}
 
 /* --- Footer --- */
 .main-footer {
     background-color: var(--dark-color);
     padding: 2.5rem 0;
-    margin-top: auto; /* Pushes footer to bottom */
+    margin-top: auto;
     border-top: 1px solid var(--dark-border-color);
 }
 
-.main-footer .container {
-     min-height: auto; /* Override container min-height */
+.main-footer .container  .container {
+    min-height: auto;
 }
 
 .footer-content {
@@ -619,8 +559,6 @@ html, body {
 }
 
 /* --- Responsive Design --- */
-
-/* Large Tablets and Small Laptops */
 @media (max-width: 1200px) {
     .container {
         max-width: 1000px;
@@ -636,7 +574,6 @@ html, body {
     }
 }
 
-/* Tablets */
 @media (max-width: 992px) {
     .container {
         padding: 0 1.5rem;
@@ -648,23 +585,22 @@ html, body {
         font-size: 1.4rem;
     }
     .cv-container {
-        flex-direction: column; /* Stack sidebar and content */
+        flex-direction: column;
         gap: 2.5rem;
     }
     .cv-sidebar,
     .cv-content {
-        width: 100%; /* Full width when stacked */
+        width: 100%;
         max-width: none;
     }
     .cv-sidebar {
-        position: static; /* Remove sticky positioning */
+        position: static;
     }
     .section-title {
         font-size: 1.6rem;
     }
 }
 
-/* Mobile Phones */
 @media (max-width: 768px) {
     body {
         font-size: 15px;
@@ -676,13 +612,12 @@ html, body {
     .main-nav ul {
         margin-top: 0.5rem;
         justify-content: center;
-        flex-wrap: wrap; /* Allow nav items to wrap */
-        gap: 0.5rem 1.5rem; /* Row and column gap */
+        flex-wrap: wrap;
+        gap: 0.5rem 1.5rem;
     }
     .main-nav ul li {
-        margin-left: 0; /* Reset margin */
+        margin-left: 0;
     }
-
     .hero {
         padding: 4rem 0;
         min-height: 50vh;
@@ -697,15 +632,14 @@ html, body {
         font-size: 1rem;
     }
     .hero-buttons {
-        flex-direction: column; /* Stack buttons */
+        flex-direction: column;
         gap: 1rem;
         align-items: center;
     }
     .btn {
         width: 80%;
-        max-width: 300px; /* Limit button width */
+        max-width: 300px;
     }
-
     .cv-sidebar {
         padding: 1.5rem;
     }
@@ -720,32 +654,31 @@ html, body {
         font-size: 1.5rem;
     }
     .timeline-item {
-       flex-direction: column; /* Stack date and content on mobile */
-       gap: 0.5rem;
-       align-items: flex-start; /* Align to left */
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
     }
     .timeline-date {
-        flex-basis: auto; /* Reset basis */
-        text-align: left; /* Align date left */
+        flex-basis: auto;
+        text-align: left;
         margin-bottom: 0.5rem;
         font-size: 0.85rem;
-        flex-direction: row; /* Date and range side-by-side */
+        flex-direction: row;
         gap: 0.5rem;
         align-items: center;
     }
     .timeline-content {
-        padding-left: 0; /* Remove padding if date is above */
-        border: none; /* Maybe remove border on mobile */
+        padding-left: 0;
+        border: none;
         padding-bottom: 0.5rem;
     }
     .timeline-item:not(:last-child) {
-        border-bottom: 1px dashed var(--dark-border-color); /* Add separator between items */
-        padding-bottom: 1.5rem; /* Add space below item */
+        border-bottom: 1px dashed var(--dark-border-color);
+        padding-bottom: 1.5rem;
     }
     .courses .timeline-content h3 .tag {
-        margin-left: 1rem; /* Adjust tag spacing */
+        margin-left: 1rem;
     }
-
     .footer-content {
         font-size: 0.85rem;
     }
@@ -754,152 +687,201 @@ html, body {
     }
 }
 
-/* Styles for PDF generation (using html2pdf.js) */
+/* --- PDF-Specific Styles --- */
 @media print {
     body {
-        background-color: #fff !important; /* White background for printing */
-        color: #000 !important; /* Black text */
-        font-size: 10pt; /* Adjust print font size */
-        -webkit-print-color-adjust: exact; /* Ensure backgrounds print */
-   	    print-color-adjust: exact;
+        background-color: #fff !important;
+        color: #000 !important;
+        font-size: 10pt !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
-    #backgroundCanvas,
+    /* Hide non-essential elements */
     .main-header,
     .main-footer,
-    .hero, /* Hide non-CV sections */
-    .download-btn /* Hide download button */
-     {
+    .download-btn {
         display: none !important;
     }
 
+    /* Reset page wrapper */
     #pageWrapper {
-        min-height: auto;
-        display: block; /* Reset flex */
+        min-height: auto !important;
+        display: block !important;
+        background: none !important;
     }
 
+    /* Ensure about-section fits */
     .about-section {
-        padding: 0;
-        background-color: transparent !important;
-    }
-
-    .container, .cv-container {
-        max-width: 100% !important;
         padding: 0 !important;
+        background-color: transparent !important;
         margin: 0 !important;
-        display: block; /* Reset flex for container */
-        min-height: auto;
     }
 
+    /* Container and CV layout */
+    .container,
+    .cv-container {
+        max-width: 190mm !important;
+        width: 100% !important;
+        padding: 5mm !important;
+        margin: 0 auto !important;
+        display: flex !important;
+        flex-direction: row !important;
+        min-height: auto !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Sidebar */
     .cv-sidebar {
-        width: 30% !important; /* Adjust width for print */
-        max-width: none !important;
-        float: left; /* Use float for basic 2-column print layout */
-        margin-right: 2%;
-        padding: 10pt !important;
+        width: 35% !important;
+        max-width: 65mm !important;
+        padding: 5mm !important;
+        background-color: #f8f8f8 !important;
         border: 1px solid #ccc !important;
-        background-color: #f8f8f8 !important; /* Light gray bg for sidebar */
-        position: static !important; /* No sticky */
         border-radius: 0 !important;
+        position: static !important;
+        margin-right: 2mm !important;
+        box-sizing: border-box !important;
     }
 
+    /* Content */
     .cv-content {
-        width: 68% !important; /* Adjust width for print */
-        float: left; /* Float next to sidebar */
-        padding: 10pt !important;
-        border: 1px solid #ccc !important;
+        width: 65% !important;
+        padding: 5mm !important;
         background-color: #fff !important;
+        border: 1px solid #ccc !important;
         border-radius: 0 !important;
+        box-sizing: border-box !important;
     }
+
     .cv-content section {
-         border: none !important;
-         padding: 0 0 15pt 0 !important;
-         margin-bottom: 15pt !important;
-         background-color: transparent !important;
+        padding: 3mm 0 !important;
+        margin-bottom: 5mm !important;
+        background-color: transparent !important;
+        border: none !important;
     }
 
-
+    /* Profile picture */
     .profile-pic {
-        width: 100px !important; /* Smaller pic for print */
-        height: 100px !important;
+        width: 80px !important;
+        height: 80px !important;
         border: 2px solid #555 !important;
+        margin: 0 auto 5mm !important;
     }
 
-    h1, h2, h3 {
-        color: #000 !important;
-        page-break-after: avoid;
-    }
-    .section-title, .cv-sidebar h2 {
+    /* Headings */
+    .section-title,
+    .cv-sidebar h2 {
+        font-size: 12pt !important;
         color: #333 !important;
         border-bottom: 1px solid #ccc !important;
-        font-size: 12pt;
-        padding-bottom: 4pt;
-        margin-bottom: 10pt;
-    }
-    .section-title .icon {
-        display: none; /* Hide icons in print */
+        padding-bottom: 2pt !important;
+        margin-bottom: 5pt !important;
     }
 
-    a {
-        color: #007bff !important; /* Standard blue links */
+    /* Hide icons */
+    .section-title .icon,
+    .contact-item .icon {
+        display: none !important;
+    }
+
+    /* Text and links */
+    a,
+    .contact-item span,
+    .project-item h3,
+    .timeline-content p,
+    .skill span {
+        color: #000 !important;
         text-decoration: none !important;
     }
-    .contact-item span, .project-item h3 {
-        color: #000 !important;
-    }
-    .contact-item .icon {
-        display: none; /* Hide icons */
-    }
 
+    /* Progress bars */
     .progress {
         background-color: #eee !important;
-        height: 5pt !important;
-    }
-    .progress-bar {
-        background: #555 !important; /* Solid gray bar */
+        height: 4pt !important;
+        border-radius: 2pt !important;
     }
 
+    .progress-bar {
+        background: #00c2ff !important;
+        border-radius: 2pt !important;
+    }
+
+    /* Tags */
     .tag {
         background-color: #eee !important;
         color: #333 !important;
-        border: 1px solid #ccc;
-        padding: 1pt 4pt;
-        font-size: 8pt;
+        border: 1px solid #ccc !important;
+        font-size: 8pt !important;
+        padding: 1pt 3pt !important;
     }
 
+    /* Timeline */
     .timeline-item {
-       display: block; /* Stack in print */
-       page-break-inside: avoid;
-       margin-bottom: 10pt;
-    }
-    .timeline-date {
-        font-size: 9pt;
-        margin-bottom: 3pt;
-        color: #555 !important;
-        font-weight: bold;
-        text-align: left;
-    }
-    .timeline-content {
-        border: none;
-        padding-bottom: 0;
-    }
-    .timeline-content p {
-         color: #333 !important;
-         font-size: 9pt;
-    }
-    .timeline-content h3 {
-        font-size: 10pt;
-        margin-bottom: 3pt;
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 5mm !important;
+        margin-bottom: 5mm !important;
+        page-break-inside: avoid !important;
     }
 
-    /* Ensure sections don't break across pages awkwardly */
-    section, .timeline-item, .skill-category {
-        page-break-inside: avoid;
+    .timeline-date {
+        font-size: 9pt !important;
+        color: #555 !important;
+        font-weight: bold !important;
+        text-align: right !important;
+        flex-basis: 20mm !important;
+    }
+
+    .timeline-content {
+        flex-grow: 1 !important;
+        border: none !important;
+        padding-bottom: 0 !important;
+    }
+
+    .timeline-content h3 {
+        font-size: 10pt !important;
+        margin-bottom: 2pt !important;
+    }
+
+    .timeline-content p {
+        font-size: 9pt !important;
+    }
+
+    /* Courses */
+    .courses .timeline-item {
+        gap: 3mm !important;
+    }
+
+    .courses .timeline-date {
+        flex-basis: 15mm !important;
+        text-align: center !important;
+    }
+
+    .courses .timeline-content h3 {
+        font-size: 9pt !important;
+    }
+
+    /* Page breaks */
+    section,
+    .timeline-item,
+    .skill-category,
+    h2,
+    h3 {
+        page-break-inside: avoid !important;
+        page-break-after: avoid !important;
+    }
+
+    /* Ensure canvas image applies */
+    #curriculo {
+        position: relative !important;
+        background: none !important;
     }
 }
 
-/* == Pricing Section Specific Styles == */
-/* (Optional: Add styles for the section wrapper if needed) */
+/* --- Pricing Section --- */
 .pricing-section {
     padding: 4rem 0;
     text-align: center;
@@ -908,106 +890,98 @@ html, body {
 .pricing-section h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: var(--primary-color); /* Use your defined variable */
+    color: var(--primary-color);
 }
 
-.section-subtitle { /* Style for the paragraph below the h1 */
+.section-subtitle {
     font-size: 1.1rem;
-    color: var(--medium-light-color); /* Use your defined variable */
+    color: var(--medium-light-color);
     max-width: 700px;
     margin: 0 auto 3rem auto;
 }
 
-/* Apply styles using the new class */
 .table-style-minimal .pricing-tables {
-    overflow-x: auto; /* Keep for responsiveness */
+    overflow-x: auto;
 }
 
 .table-style-minimal #pricing-table {
     width: 100%;
-    border-collapse: collapse; /* Important for borders */
-    margin-top: 2.5rem; /* Space above table */
-    border-spacing: 0; /* Remove space between cells */
-    background-color: transparent; /* Ensure no unwanted background */
+    border-collapse: collapse;
+    margin-top: 2.5rem;
+    border-spacing: 0;
+    background-color: transparent;
 }
 
-/* Header Styling */
 .table-style-minimal #pricing-table th {
     text-align: left;
-    padding: 1rem 1.2rem; /* Adjust padding */
-    border-bottom: 2px solid var(--primary-color); /* Accent border below header */
-    color: var(--primary-color); /* Header text color */
+    padding: 1rem 1.2rem;
+    border-bottom: 2px solid var(--primary-color);
+    color: var(--primary-color);
     font-weight: 600;
     text-transform: uppercase;
     font-size: 0.9rem;
     letter-spacing: 0.5px;
-    background-color: transparent; /* No header background */
+    background-color: transparent;
     white-space: nowrap;
 }
 
-/* Data Cell Styling */
 .table-style-minimal #pricing-table td {
-    padding: 1.2rem 1.2rem; /* Consistent padding */
-    border-bottom: 1px solid var(--dark-border-color); /* Subtle horizontal lines */
-    vertical-align: middle; /* Align text vertically in the middle */
-    color: var(--medium-light-color); /* Default text color */
+    padding: 1.2rem 1.2rem;
+    border-bottom: 1px solid var(--dark-border-color);
+    vertical-align: middle;
+    color: var(--medium-light-color);
     font-size: 0.95rem;
     line-height: 1.6;
 }
 
-/* Specific Column Text Colors */
-.table-style-minimal #pricing-table td:first-child { /* Service */
-    color: var(--light-color); /* Brighter color for service */
+.table-style-minimal #pricing-table td:first-child {
+    color: var(--light-color);
     font-weight: 500;
 }
 
-.table-style-minimal #pricing-table td:nth-child(2) { /* Description */
-     color: var(--medium-light-color); /* Keep description slightly dimmer */
+.table-style-minimal #pricing-table td:nth-child(2) {
+    color: var(--medium-light-color);
 }
 
-.table-style-minimal #pricing-table td:last-child { /* Price */
-    color: var(--primary-color); /* Accent color for price */
+.table-style-minimal #pricing-table td:last-child {
+    color: var(--primary-color);
     font-weight: 500;
     text-align: right;
     white-space: nowrap;
     font-size: 1rem;
 }
 
-/* Zebra Striping (Alternating Row Backgrounds) */
 .table-style-minimal #pricing-table tbody tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.03); /* Very subtle background for even rows */
+    background-color: rgba(255, 255, 255, 0.03);
 }
 
-/* Remove bottom border from the last row */
 .table-style-minimal #pricing-table tbody tr:last-child td {
     border-bottom: none;
 }
 
-/* Hover Effect */
 .table-style-minimal #pricing-table tbody tr {
-    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out; /* Smooth transition */
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
 .table-style-minimal #pricing-table tbody tr:hover {
-    background-color: rgba(0, 194, 255, 0.1); /* Use primary color with alpha for hover */
-    transform: scale(1.01); /* Slight scale effect on hover */
-    cursor: default; /* Indicate row is just for display */
+    background-color: rgba(0, 194, 255, 0.1);
+    transform: scale(1.01);
+    cursor: default;
 }
+
 .table-style-minimal #pricing-table tbody tr:hover td:first-child {
-     color: var(--light-color); /* Keep colors consistent on hover */
+    color: var(--light-color);
 }
+
 .table-style-minimal #pricing-table tbody tr:hover td:nth-child(2) {
-     color: var(--medium-light-color);
+    color: var(--medium-light-color);
 }
+
 .table-style-minimal #pricing-table tbody tr:hover td:last-child {
-     color: var(--primary-color);
+    color: var(--primary-color);
 }
 
-
-/* == Mobile Styles for Alternative Table == */
 @media (max-width: 576px) {
-        /* == Pricing Section Specific Styles == */
-    /* (Optional: Add styles for the section wrapper if needed) */
     .pricing-section {
         padding: 4rem 0;
         text-align: center;
@@ -1016,72 +990,71 @@ html, body {
     .pricing-section h1 {
         font-size: 2.5rem;
         margin-bottom: 1rem;
-        color: var(--primary-color); /* Use your defined variable */
+        color: var(--primary-color);
     }
 
     .table-style-minimal #pricing-table thead {
-        display: none; /* Hide header */
+        display: none;
     }
 
     .table-style-minimal #pricing-table,
     .table-style-minimal #pricing-table tbody,
     .table-style-minimal #pricing-table tr,
     .table-style-minimal #pricing-table td {
-        display: block; /* Stack elements */
+        display: block;
         width: 100%;
     }
 
     .table-style-minimal #pricing-table tr {
-        margin-bottom: 1.5rem; /* Increased space between cards */
-        border: 1px solid var(--dark-border-color); /* Border around each "card" */
+        margin-bottom: 1.5rem;
+        border: 1px solid var(--dark-border-color);
         border-radius: 8px;
         padding: 1rem;
-        background-color: var(--medium-dark-color); /* Card background */
-        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Add transition for hover */
+        background-color: var(--medium-dark-color);
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     }
-     /* Remove zebra striping for mobile card view */
-     .table-style-minimal #pricing-table tbody tr:nth-child(even) {
+
+    .table-style-minimal #pricing-table tbody tr:nth-child(even) {
         background-color: var(--medium-dark-color);
     }
 
-     /* Add hover effect to mobile cards */
     .table-style-minimal #pricing-table tr:hover {
         transform: translateY(-3px);
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        background-color: var(--medium-dark-color); /* Keep background on hover */
+        background-color: var(--medium-dark-color);
     }
-
 
     .table-style-minimal #pricing-table td {
-        border: none; /* Remove internal borders */
-        padding: 0.6rem 0; /* Adjust padding */
+        border: none;
+        padding: 0.6rem 0;
         text-align: right;
         position: relative;
-        padding-left: 45%; /* Space for label */
-        color: var(--medium-light-color); /* Default mobile text color */
-        border-bottom: 1px dashed rgba(255, 255, 255, 0.1); /* Dashed separator between fields */
+        padding-left: 45%;
+        color: var(--medium-light-color);
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
     }
-     .table-style-minimal #pricing-table td:last-child {
-        border-bottom: none; /* No separator after the last field (price) */
-        padding-bottom: 0;
-        color: var(--primary-color); /* Ensure price color */
-    }
-     .table-style-minimal #pricing-table td:first-child {
-         padding-top: 0;
-         color: var(--light-color); /* Ensure service color */
-     }
 
+    .table-style-minimal #pricing-table td:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+        color: var(--primary-color);
+    }
+
+    .table-style-minimal #pricing-table td:first-child {
+        padding-top: 0;
+        color: var(--light-color);
+    }
 
     .table-style-minimal #pricing-table td::before {
         content: attr(data-label);
         position: absolute;
         left: 0;
-        width: 40%; /* Adjust width */
+        width: 40%;
         padding-right: 10px;
         white-space: nowrap;
         text-align: left;
-        font-weight: 600; /* Bolder label */
-        color: var(--primary-color); /* Label color */
-        font-size: 0.85rem; /* Smaller label */
+        font-weight: 600;
+        color: var(--primary-color);
+        font-size: 0.85rem;
     }
 }
