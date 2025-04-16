@@ -1058,3 +1058,149 @@ html, body {
         font-size: 0.85rem;
     }
 }
+
+/* --- Contact Page Styles --- */
+
+/* Add or modify in styles.css */
+
+/* Style for Radio buttons (can be similar to checkboxes) */
+.radio-group {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem; /* Space between radio and its label */
+    margin-bottom: 0.5rem; /* Spacing between radio options */
+}
+
+.radio-group label {
+    margin-bottom: 0; /* Override default margin */
+    color: var(--medium-light-color);
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+    cursor: pointer;
+    width: 18px; /* Adjust size */
+    height: 18px;
+    accent-color: var(--primary-color); /* Modern way to color */
+    vertical-align: middle;
+    margin: 0; /* Reset potential default margins */
+}
+
+/* Style for the added small text hint */
+.form-group small {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--medium-light-color);
+    opacity: 0.8;
+}
+
+.contact-page-section {
+    padding: 4rem 0;
+    flex-grow: 1; /* Ensure it pushes footer down */
+    background-color: var(--medium-dark-color); /* Match other sections */
+}
+
+.contact-page-section h1 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 2.5rem; /* Match hero heading */
+}
+
+/* Reusing subtitle style from pricing if available, or define here */
+.contact-page-section .section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--medium-light-color);
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+}
+
+
+#contactForm {
+    max-width: 700px; /* Adjust width as needed */
+    margin: 2rem auto 0 auto; /* Center form */
+    padding: 2rem;
+    background-color: var(--dark-color); /* Darker background for form */
+    border-radius: 12px;
+    border: 1px solid var(--dark-border-color);
+}
+
+.form-group {
+    margin-bottom: 1.8rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.7rem;
+    color: var(--light-color);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+/* Checkbox styling */
+.contact-preference p {
+    color: var(--light-color);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.contact-preference {
+    display: flex;
+    flex-direction: column; /* Stack label and options */
+    gap: 0.5rem; /* Space between checkbox options */
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem; /* Space between checkbox and its label */
+}
+
+.checkbox-group label {
+    margin-bottom: 0; /* Override default margin */
+    color: var(--medium-light-color);
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+    cursor: pointer;
+    width: 18px; /* Adjust size */
+    height: 18px;
+    accent-color: var(--primary-color); /* Modern way to color checkboxes */
+    vertical-align: middle;
+}
+
+/* Textarea styling */
+.message-area textarea {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--dark-border-color);
+    background-color: var(--medium-dark-color);
+    color: var(--light-color);
+    font-family: var(--font-main);
+    font-size: 1rem;
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 120px; /* Minimum height */
+    transition: border-color var(--transition-fast);
+}
+
+.message-area textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 194, 255, 0.2); /* Optional focus indicator */
+}
+
+/* Submit button alignment */
+.form-submit {
+    text-align: center; /* Center button */
+    margin-top: 2rem;
+}
+
+.form-submit .btn {
+    padding: 0.9rem 2.5rem; /* Slightly larger button */
+}
