@@ -1213,5 +1213,5 @@ html, body {
 #replyTo::placeholder {
     color: #7000ff;      /* Light grey placeholder text */
     font-style: bold; /* Italicize placeholder */
-    font-size: 14px; */ /* Smaller placeholder text */
+    font-size: 14px; /* Smaller placeholder text */
 }
