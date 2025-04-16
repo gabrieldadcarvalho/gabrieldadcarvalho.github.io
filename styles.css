@@ -1120,8 +1120,8 @@ html, body {
 
 
 #contactForm {
-    max-width: 700px; /* Adjust width as needed */
-    margin: 2rem auto 0 auto; /* Center form */
+    max-width: 500px; /* Adjust width as needed */
+    margin: 2rem auto 2rem auto; /* Center form */
     padding: 2rem;
     background-color: var(--dark-color); /* Darker background for form */
     border-radius: 12px;
@@ -1134,10 +1134,10 @@ html, body {
 
 .form-group label {
     display: block;
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.4rem;
     color: var(--light-color);
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 1.2rem;
 }
 
 /* Checkbox styling */
@@ -1203,4 +1203,15 @@ html, body {
 
 .form-submit .btn {
     padding: 0.9rem 2.5rem; /* Slightly larger button */
+}
+
+#replyTo {
+    font-size: 12px;        /* Make font larger */
+
+}
+
+#replyTo::placeholder {
+    color: #7000ff;      /* Light grey placeholder text */
+    font-style: bold; /* Italicize placeholder */
+    font-size: 14px; */ /* Smaller placeholder text */
 }
