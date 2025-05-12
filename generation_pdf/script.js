@@ -7,7 +7,7 @@ const fs = require('fs');
 // --- Configuration ---
 const curriculumHtmlPath = path.resolve(__dirname, '../curriculum.html');
 const curriculumUrl = `file://${curriculumHtmlPath}`;
-const outputPdfPath = path.resolve(__dirname, '../Curriculo_Gabriel_Carvalho_Puppeteer.pdf');
+const outputPdfPath = path.resolve(__dirname, '../Curriculo_Gabriel_Carvalho.pdf');
 // Define desktop viewport dimensions - initial height doesn't strictly matter for final PDF height now
 const desktopViewport = { width: 1920, height: 1080 };
 // --- End Configuration ---
