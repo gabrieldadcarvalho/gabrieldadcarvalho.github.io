@@ -1,55 +1,29 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Changed title slightly for this specific page -->
-    <title>Currículo - Gabriel D'assumpção de Carvalho</title>
+    <title>Curriculum - Gabriel D'assumpção de Carvalho</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!-- Optional: Keep the background canvas if you want it on this page too -->
     <canvas id="backgroundCanvas"></canvas>
-
-    <!-- Include the header for consistent navigation -->
-    <header class="main-header">
-        <div class="container">
-            <div class="logo">GDC</div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html">Sobre</a></li>
-                    <li><a href="curriculum.html" class="active">Currículo</a></li>
-                    <li><a href="https://gabrieldadcarvalho.streamlit.app/" target="_blank">Portfólio</a></li>
-                    <li><a href="servicos.html">Serviços</a></li>
-                    <!-- Make 'Contato' active on this page -->
-                    <li><a href="contact.html">Contato</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Removed the #pageWrapper div if it's mainly for the index page structure -->
-    <!-- Or keep #pageWrapper if your CSS relies on it for layout on all pages -->
-    <!-- Let's keep it for now assuming styles might use it -->
     <div id="pageWrapper">
-
-        <!-- This is the main content extracted from index.html -->
         <main id="curriculo" class="about-section">
-            <!-- Removed the script tag from inside main -->
             <div class="container cv-container">
                 <div class="cv-sidebar">
                     <div class="profile-section">
                         <img src="imagens/foto.png" alt="Gabriel D'assumpção de Carvalho" class="profile-pic">
-                        <button id="downloadPDF" class="download-btn">Baixar PDF</button>
+                        <button id="downloadPDF" class="download-btn">Download PDF</button>
 
                         <script>
                             document.getElementById('downloadPDF').addEventListener('click', function () {
                                 const link = document.createElement('a');
-                                link.href = 'https://github.com/gabrieldadcarvalho/gabrieldadcarvalho.github.io/raw/main/Curriculo_Gabriel_Carvalho.pdf';
-                                link.download = 'Curriculo_Gabriel_Carvalho.pdf'; // Optional: suggest a filename
+                                link.href = 'https://github.com/gabrieldadcarvalho/gabrieldadcarvalho.github.io/raw/main/Curriculum_Gabriel_Carvalho.pdf';
+                                link.download = 'Curriculum_Gabriel_Carvalho.pdf';
                                 document.body.appendChild(link);
                                 link.click();
                                 document.body.removeChild(link);
@@ -58,16 +32,16 @@
                     </div>
 
                     <div class="contact-section">
-                        <h2>Contatos</h2>
+                        <h2>Contacts</h2>
                         <div class="contact-item">
                             <a href="mailto:gabriel.dassumpcao@ufpe.br" target="_blank">
                                 <img src="imagens/gmail.png" alt="gmail" class="icon">
-                                <span>gabriel.dassumpcao@ufpe.br</span>
+                                <span>gabrieldadcarvalho@gmail.com</span>
                             </a>
                         </div>
                         <div class="contact-item">
                             <a href="https://www.linkedin.com/in/gabriel-carvalho-ab38b7209/" target="_blank">
-                                <img src="imagens/linkedin.png" alt="linkedin" class="icon"> <!-- Added crossorigin -->
+                                <img src="imagens/linkedin.png" alt="linkedin" class="icon">
                                 <span>Gabriel Carvalho</span>
                             </a>
                         </div>
@@ -80,11 +54,11 @@
                     </div>
 
                     <div class="skills-section">
-                        <h2>Habilidades</h2>
+                        <h2>Skills</h2>
                         <div class="skill-category">
-                            <h3>Técnicas</h3>
+                            <h3>Technique</h3>
                             <div class="skill">
-                                <span>Inteligência Artificial</span>
+                                <span>Artificial Intelligence</span>
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 80%;"></div>
                                 </div>
@@ -116,21 +90,21 @@
                         </div>
 
                         <div class="skill-category">
-                            <h3>Comportamentais</h3>
+                            <h3>Behavioral</h3>
                             <div class="skill">
-                                <span>Proatividade</span>
+                                <span>Proactivity</span>
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 100%;"></div>
                                 </div>
                             </div>
                             <div class="skill">
-                                <span>Criatividade</span>
+                                <span>Creativity</span>
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 100%;"></div>
                                 </div>
                             </div>
                             <div class="skill">
-                                <span>Trabalho em equipe</span>
+                                <span>Teamwork</span>
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 100%;"></div>
                                 </div>
@@ -139,20 +113,20 @@
                     </div>
 
                     <div class="projects-section">
-                        <h2>Projetos</h2>
+                        <h2>Projects</h2>
                         <div class="project-item">
                             <a href="https://gabrieldadcarvalho.streamlit.app/" target="_blank">
-                                <h3>App Web - Portfólio</h3>
+                                <h3>Web App - Portfolio</h3>
                             </a>
                         </div>
                         <div class="project-item">
                             <a href="https://www.instagram.com/investidordapeste/" target="_blank">
-                                <h3>Instagram de Investimentos</h3>
+                                <h3>Investment Instagram</h3>
                             </a>
                         </div>
                         <div class="project-item">
                             <a href="https://www.instagram.com/kohuculture/" target="_blank">
-                                <h3>Marca de Roupa</h3>
+                                <h3>Clothing Brand</h3>
                             </a>
                         </div>
                     </div>
@@ -160,14 +134,14 @@
 
                 <div class="cv-content" id="content">
                     <section class="about-me">
-                        <h2 class="section-title">Sobre Mim</h2>
+                        <h2 class="section-title">About Me</h2>
                         <p class="bio">
-                            Sou estudante de Ciências Atuariais na UFPE, com grande interesse em áreas como probabilidade, estatística, demografia e matemática financeira. Atualmente, estou direcionando meu desenvolvimento para Inteligência Artificial, área na qual tenho facilidade devido ao conhecimento prévio em estatística e probabilidade, essenciais para a construção de modelos preditivos. Durante minha graduação, percebi a importância de aplicar o conteúdo aprendido, e por isso desenvolvi um aplicativo web, utilizando Python e R, com modelos e projetos interativos nas áreas de Estatística, Finanças e Inteligência Artificial.
+                            I am a student of Actuarial Sciences at UFPE, with a keen interest in areas such as probability, statistics, demography, and financial mathematics. Currently, I am directing my development towards Artificial Intelligence, an area in which I have a knack due to my prior knowledge in statistics and probability, essential for building predictive models. During my undergraduate studies, I realized the importance of applying the learned content, and therefore I developed a web application using Python and R, with models and interactive projects in the areas of Statistics, Finance, and Artificial Intelligence.
                         </p>
                     </section>
 
                     <section class="education">
-                        <h2 class="section-title"><img src="imagens/graduate-hat.svg" alt="hat" class="icon">Formação Acadêmica</h2>
+                        <h2 class="section-title"><img src="imagens/graduate-hat.svg" alt="hat" class="icon">Academic Background</h2>
                         <div class="timeline">
                             <div class="timeline-item">
                                 <div class="timeline-date">
@@ -176,25 +150,25 @@
                                     <span>2026.2</span>
                                 </div>
                                 <div class="timeline-content">
-                                    <h3>Ciências Atuariais - UFPE <span class="tag">Graduação</span></h3>
+                                    <h3>Actuarial Sciences - UFPE <span class="tag">Bachelor's Degree</span></h3>
                                 </div>
                             </div>
                         </div>
                     </section>
 
                     <section class="experience">
-                        <h2 class="section-title"><img src="imagens/briefcase.svg" alt="briefcase" class="icon">Experiência Profissional</h2>
+                        <h2 class="section-title"><img src="imagens/briefcase.svg" alt="briefcase" class="icon">Professional Experience</h2>
 
                         <div class="timeline">
                             <div class="timeline-item">
                                 <div class="timeline-date">
                                     <span>2025</span>
                                     <span class="timeline-line"></span>
-                                    <span>Atual</span>
+                                    <span>Current</span>
                                 </div>
                                 <div class="timeline-content">
-                                    <h3>Deep Learning - CIN/UFPE <span class="tag">Monitor</span></h3>
-                                    <p>Atuo como monitor da disciplina de Deep Learning no Centro de Informática da UFPE (CIN), onde apoio o desenvolvimento de projetos estudantis e colaboro com o processo de aprendizagem. Minhas responsabilidades incluem a elaboração de aulas e listas de exercícios, além da orientação e supervisão dos alunos em seus projetos práticos na área de Deep Learning.</p>
+                                    <h3>Deep Learning - CIN/UFPE <span class="tag">Teaching Assistant</span></h3>
+                                    <p>Atuo como Teaching Assistant da disciplina de Deep Learning no Centro de Informática da UFPE (CIN), onde apoio o desenvolvimento de projetos estudantis e colaboro com o processo de aprendizagem. Minhas responsabilidades incluem a elaboração de aulas e listas de exercícios, além da orientação e supervisão dos alunos em seus projetos práticos na área de Deep Learning.</p>
                                 </div>
                             </div>
                                 <div class="timeline">
@@ -202,11 +176,11 @@
                                         <div class="timeline-date">
                                             <span>2024</span>
                                             <span class="timeline-line"></span>
-                                            <span>Atual</span>
+                                            <span>Current</span>
                                         </div>
                                         <div class="timeline-content">
-                                            <h3>Reciprev - Saúde Recife <span class="tag">Estagiário de Investimentos</span></h3>
-                                            <p>Atualmente, auxilio no desenvolvimento e implementação de soluções tecnológicas para otimizar a gestão de investimentos na RECIPREV. Minhas responsabilidades incluem a manutenção e evolução de um aplicativo web em JavaScript para gerenciamento de investimentos, além do desenvolvimento de uma aplicação para análises estatísticas utilizando a biblioteca Shiny, do R. Também utilizo contêineres Docker para facilitar a universalização e implantação dos aplicativos. Além disso, atuo na coleta e processamento de dados com Python, utilizando bancos de dados MongoDB e PostgreSQL para armazenamento e gerenciamento eficiente das informações financeiras.</p>
+                                            <h3>Reciprev - Saúde Recife <span class="tag">Investment Intern</span></h3>
+                                            <p>Currently, I assist in the development and implementation of technological solutions to optimize investment management at RECIPREV. My responsibilities include the maintenance and evolution of a web application in JavaScript for investment management, as well as the development of an application for statistical analyses using the Shiny library in R. I also use Docker containers to facilitate the universalization and deployment of applications. In addition, I work on data collection and processing with Python, using MongoDB and PostgreSQL databases for efficient storage and management of financial information.</p>
                                         </div>
                                     </div>
 
@@ -217,8 +191,8 @@
                                             <span>2025</span>
                                         </div>
                                         <div class="timeline-content">
-                                            <h3>Liga Quantitativa - UFRN <span class="tag">Analista Quantitativo</span></h3>
-                                            <p>Atuei como analista quantitativo, participando de competições voltadas ao mercado financeiro e desenvolvendo modelos quantitativos aplicáveis ao mercado de capitais. Além disso, criei um aplicativo web utilizando Streamlit para a implementação e visualização desses modelos, facilitando a análise e a tomada de decisões estratégicas.</p>
+                                            <h3>Liga Quantitativa - UFRN <span class="tag">Quantitative Analyst</span></h3>
+                                            <p>I worked as a quantitative analyst, participating in competitions focused on the financial market and developing quantitative models applicable to the capital market. In addition, I created a web application using Streamlit for the implementation and visualization of these models, facilitating analysis and strategic decision-making.</p>
                                         </div>
                                     </div>
 
@@ -229,8 +203,8 @@
                                             <span>2023</span>
                                         </div>
                                         <div class="timeline-content">
-                                            <h3>Excelsior Seguro <span class="tag">Estagiário Administrativo</span></h3>
-                                            <p>Como estagiário no setor de intermediação, fui responsável por automatizar a geração de comprovantes de pagamento para corretores de seguros, além de realizar o tratamento de dados e desenvolver dashboards financeiros para otimizar a análise e a gestão das informações.</p>
+                                            <h3>Excelsior Seguro <span class="tag">Administrative Intern</span></h3>
+                                            <p>As an intern in the intermediation sector, I was responsible for automating the generation of payment receipts for insurance brokers, as well as data processing and developing financial dashboards to optimize the analysis and management of information.</p>
                                         </div>
                                     </div>
 
@@ -241,8 +215,8 @@
                                             <span>2023</span>
                                         </div>
                                         <div class="timeline-content">
-                                            <h3>Diretório Acadêmico de Ciências Atuarias - UFPE <span class="tag">Presidente</span></h3>
-                                            <p>Como presidente do Diretório Acadêmico, fui responsável pela gestão de pessoas, elaboração de documentações e condução de reuniões. Além disso, liderei o planejamento estratégico em conjunto com os membros e representei os estudantes em reuniões institucionais.</p>
+                                            <h3>Diretório Acadêmico de Ciências Atuariais - UFPE <span class="tag">President</span></h3>
+                                            <p>As president of the Academic Directory, I was responsible for people management, documentation preparation, and meeting conduction. In addition, I led strategic planning in conjunction with members and represented students in institutional meetings.</p>
                                         </div>
                                     </div>
 
@@ -253,8 +227,8 @@
                                             <span>2022</span>
                                         </div>
                                         <div class="timeline-content">
-                                            <h3>Fundamentos de Cálculo 2 - UFPE <span class="tag">Monitor</span></h3>
-                                            <p>Sendo monitor, fui responsável por auxiliar os alunos na resolução de dúvidas sobre os temas abordados em Cálculo 2, além de elaborar listas de exercícios para reforço do aprendizado.</p>
+                                            <h3>Fundamentals of Calculus 2 - UFPE <span class="tag">Teaching Assistant</span></h3>
+                                            <p>As a teaching assistant, I was responsible for helping students with questions about the topics covered in Calculus 2, as well as creating exercise lists to reinforce learning.</p>
                                         </div>
                                     </div>
 
@@ -262,18 +236,18 @@
                                         <div class="timeline-date">
                                             <span>2021</span>
                                             <span class="timeline-line"></span>
-                                            <span>Atual</span>
+                                            <span>Current</span>
                                         </div>
                                         <div class="timeline-content">
-                                            <h3>Kohu Culture <span class="tag">Co-fundador</span></h3>
-                                            <p>Como co-fundador da Kohu Culture, sou responsável pela participação ativa no processo criativo para o desenvolvimento de roupas e conteúdos online. Também atuei no desenvolvimento do aplicativo web para e-commerce, no gerenciamento de tráfego pago, além do controle de estoque e das operações contábeis da empresa.</p>
+                                            <h3>Kohu Culture <span class="tag">Co-founder</span></h3>
+                                            <p>As a co-founder of Kohu Culture, I am responsible for actively participating in the creative process for the development of clothing and online content. I also worked on the development of the web application for e-commerce, managing paid traffic, as well as controlling inventory and the company's accounting operations.</p>
                                         </div>
                                     </div>
                                 </div>
                     </section>
 
                     <section class="courses">
-                        <h2 class="section-title"><img src="imagens/administrator.svg" alt="administrator" class="icon">Cursos e Certificações</h2>
+                        <h2 class="section-title"><img src="imagens/administrator.svg" alt="administrator" class="icon">Courses and Certifications</h2>
                         <div class="timeline">
                             <div class="timeline-item">
                                 <div class="timeline-date">
@@ -298,7 +272,7 @@
                                     <span>2024</span>
                                 </div>
                                 <div class="timeline-content">
-                                    <h3>Introdução às Competências Essenciais para a Carreira de Análise de Dados <span class="tag">Linkedin</span></h3>
+                                    <h3>Introduction to Essential Skills for Data Analysis Career <span class="tag">Linkedin</span></h3>
                                 </div>
                             </div>
 
@@ -307,7 +281,7 @@
                                     <span>2024</span>
                                 </div>
                                 <div class="timeline-content">
-                                    <h3>Neural Networks e Deep Learning <span class="tag">Escola de IA</span></h3>
+                                    <h3>Neural Networks and Deep Learning <span class="tag">Escola de IA</span></h3>
                                 </div>
                             </div>
 
@@ -325,7 +299,7 @@
                                     <span>2023</span>
                                 </div>
                                 <div class="timeline-content">
-                                    <h3>Gestão de Risco e Performance <span class="tag">ANBIMA</span></h3>
+                                    <h3>Risk and performance management<span class="tag">ANBIMA</span></h3>
                                 </div>
                             </div>
 
@@ -334,7 +308,7 @@
                                     <span>2021</span>
                                 </div>
                                 <div class="timeline-content">
-                                    <h3>Python 3 [Mundo 1 e 2] <span class="tag">Curso em Vídeo</span></h3>
+                                    <h3>Python 3 [World 1 and 2] <span class="tag">Curso em Vídeo</span></h3>
                                 </div>
                             </div>
 
@@ -343,7 +317,7 @@
                                     <span>2020</span>
                                 </div>
                                 <div class="timeline-content">
-                                    <h3>Mercado financeiro de A a Z <span class="tag">ANBIMA</span></h3>
+                                    <h3>Financial Market from A to Z <span class="tag">ANBIMA</span></h3>
                                 </div>
                             </div>
                         </div>
@@ -371,12 +345,9 @@
             </div>
         </footer>
 
-    </div> <!-- End of #pageWrapper -->
+    </div>
 
-    <!-- Link the script file at the end of the body -->
     <script src="script.js"></script>
-    <!-- Include your background canvas script if it's separate and needed here -->
-    <!-- <script src="backgroundScript.js"></script> -->
 
 </body>
 

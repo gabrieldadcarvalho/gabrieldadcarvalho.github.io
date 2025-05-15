@@ -1215,3 +1215,45 @@ html, body {
     font-style: bold; /* Italicize placeholder */
     font-size: 14px; /* Smaller placeholder text */
 }
+
+.language-selector {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    display: flex;
+    align-items: center;
+    z-index: 20;
+    gap: 0.5rem;
+}
+
+.language-btn {
+    background-color: var(--medium-dark-color);
+    color: var(--medium-light-color);
+    border: 1px solid var(--dark-border-color);
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.language-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+}
+
+.language-btn.active {
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .language-selector {
+        top: auto;
+        right: auto;
+        position: relative;
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+}
