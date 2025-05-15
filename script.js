@@ -40,15 +40,3 @@ document.addEventListener("DOMContentLoaded", function () {
   // Carrega o currículo padrão (PT)
   loadCurriculum("pt");
 });
-
-document.addEventListener('click', function (e) {
-  if (e.target && e.target.id === 'downloadPDF') {
-    downloadPDF();
-  }
-});
-
-function downloadPDF() {
-  const pdfUrl = 'https://github.com/gabrieldadcarvalho/gabrieldadcarvalho.github.io/raw/main/Curriculum_Gabriel_Carvalho_pt.pdf';
-  window.open(pdfUrl, '_blank');
-}
-
