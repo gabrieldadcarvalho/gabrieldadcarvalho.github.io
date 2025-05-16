@@ -291,7 +291,11 @@ html, body {
     cursor: pointer;
     transition: var(--transition-fast);
     font-size: 1rem;
+    text-decoration: none; /* remove a underline */
+    display: inline-block;  /* garante que padding funcione corretamente */
+    text-align: center;     /* centraliza o texto */
 }
+
 
 .download-btn:hover {
     background-color: var(--secondary-color);
